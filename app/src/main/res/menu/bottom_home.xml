@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_fast_food"
+        android:title="Menu"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_order"
+        android:enabled="true"
+        android:icon="@drawable/ic_cooking"
+        android:title="Orders"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_restaurant"
+        android:enabled="true"
+        android:icon="@drawable/ic_fork"
+        android:title="Restaurants"
+        app:showAsAction="always|withText" />
+</menu>

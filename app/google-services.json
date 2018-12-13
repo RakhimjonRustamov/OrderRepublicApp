@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "263649438384",
+    "firebase_url": "https://orderrepublic-2331a.firebaseio.com",
+    "project_id": "orderrepublic-2331a",
+    "storage_bucket": "orderrepublic-2331a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263649438384:android:8b1aa40f04e55df7",
+        "android_client_info": {
+          "package_name": "app.repbulic.order.orderrepublic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263649438384-cngjrm7ndgng8lk5fgsephlml3dr4mbu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.repbulic.order.orderrepublic",
+            "certificate_hash": "a5dffa69ee9ee4285fb73cbf02298f9685fd1be9"
+          }
+        },
+        {
+          "client_id": "263649438384-0d9mp0s8qrntqlb1n3k9m2a2usickkqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBudYMmJsp2fURlBfrq5gPN6FCrjpKC7C4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263649438384-0d9mp0s8qrntqlb1n3k9m2a2usickkqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
