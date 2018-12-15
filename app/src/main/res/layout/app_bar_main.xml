@@ -14,13 +14,20 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorAccent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:attr/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+
+    <TextView
+        android:id="@+id/text_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:gravity="center"
+        />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"

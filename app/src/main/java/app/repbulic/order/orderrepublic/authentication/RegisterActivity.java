@@ -21,6 +21,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import app.repbulic.order.orderrepublic.MainActivity;
@@ -119,22 +122,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
     private void insertUser(FirebaseUser firebaseUser ){
         String firstName ="firstname";
         String lastName="lastname";
         boolean isOwner=false;
         String email=firebaseUser.getEmail();
         String userId=firebaseUser.getUid();
-        User user=new User(firstName, lastName, isOwner, email);
+        User user=new User(userId, firstName, lastName, isOwner, email);
         firebaseDatabase= FirebaseDatabase.getInstance();
         Toast.makeText(this, "INSERT USER FUNCTION", Toast.LENGTH_LONG).show();
         DatabaseReference userReference=firebaseDatabase.getReference();
         userReference.child("users").child(userId).setValue(user);
     }
-
-
-
-
-
 }
