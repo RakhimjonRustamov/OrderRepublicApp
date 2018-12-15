@@ -30,8 +30,7 @@
         app:itemBackground="@color/background"
         app:itemIconTint="@drawable/navigation_selector"
         app:itemTextColor="@drawable/navigation_selector"
-        app:menu="@menu/bottom_home"
-        />
+        app:menu="@menu/bottom_home" />
 
 
 </android.support.design.widget.CoordinatorLayout>
