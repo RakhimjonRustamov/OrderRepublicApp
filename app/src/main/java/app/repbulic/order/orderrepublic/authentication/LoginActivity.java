@@ -15,9 +15,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import app.repbulic.order.orderrepublic.MainActivity;
 import app.repbulic.order.orderrepublic.R;
+import app.repbulic.order.orderrepublic.models.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.login_button) Button loginButton;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +95,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
 
     }
-
-
-
 }
