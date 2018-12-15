@@ -7,6 +7,8 @@ public class User {
     private boolean isOwner;
     private String email;
 
+    public User(){}
+
     public User(String userId, String firstName, String lastName, boolean isOwner, String email) {
         this.userId = userId;
         this.firstName = firstName;
@@ -23,8 +25,6 @@ public class User {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
-    public User(){}
 
     public String getFirstName() {
         return firstName;

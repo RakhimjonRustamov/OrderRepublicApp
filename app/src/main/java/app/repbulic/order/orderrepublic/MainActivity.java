@@ -2,9 +2,9 @@ package app.repbulic.order.orderrepublic;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,13 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import app.repbulic.order.orderrepublic.authentication.LoginActivity;
+import app.repbulic.order.orderrepublic.iu.main.MenuFragment;
+import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
+import app.repbulic.order.orderrepublic.iu.nav.AboutActivity;
+import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
+import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import app.repbulic.order.orderrepublic.iu.main.ProfileFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import app.repbulic.order.orderrepublic.authentication.LoginActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -79,26 +81,24 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment=null;
+        Fragment fragment= MenuFragment.newInstance();
         int id = item.getItemId();
 
         if (id == R.id.nav_favorites) {
-            // Handle the camera action
+            startActivity(new Intent(MainActivity.this, FavoritesActivity.class));
         } else if (id == R.id.nav_profile) {
-            fragment = ProfileFragment.newInstance();
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_orders) {
-
+            fragment= OrdersFragment.newInstance();
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(MainActivity.this, AboutActivity.class));
         }else if (id == R.id.nav_logout) {
-            fragment=ProfileFragment.newInstance();
             FirebaseAuth.getInstance().signOut();
             Intent intent=new Intent(MainActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         FragmentManager fragmentManager = getSupportFragmentManager();
