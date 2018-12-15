@@ -25,12 +25,10 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".authentication.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-
         <meta-data
             tools:node="replace"
             android:name="android.support.VERSION"
             android:value="26.1.0" />
-
     </application>
 
 </manifest>
