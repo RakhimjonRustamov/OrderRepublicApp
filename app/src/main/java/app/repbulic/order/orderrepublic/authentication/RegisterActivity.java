@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -128,7 +129,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         boolean isOwner=false;
         String email=firebaseUser.getEmail();
         String userId=firebaseUser.getUid();
-        User user=new User(userId, firstName, lastName, isOwner, email);
+        ArrayList<String>favlist = new ArrayList<String>();
+        favlist.add("");
+        User user=new User(userId, firstName, lastName, isOwner, email, favlist);
         firebaseDatabase= FirebaseDatabase.getInstance();
         Toast.makeText(this, "INSERT USER FUNCTION", Toast.LENGTH_LONG).show();
         DatabaseReference userReference=firebaseDatabase.getReference();

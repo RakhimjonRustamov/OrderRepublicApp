@@ -1,21 +1,27 @@
 package app.repbulic.order.orderrepublic.models;
 
+import java.util.ArrayList;
+
 public class User {
     private String userId;
     private String firstName;
     private String lastName;
     private boolean isOwner;
     private String email;
+    private ArrayList<String>favoritesList;
 
     public User(){}
 
-    public User(String userId, String firstName, String lastName, boolean isOwner, String email) {
+    public User(String userId, String firstName, String lastName, boolean isOwner, String email, ArrayList<String> favoritesList) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isOwner = isOwner;
         this.email = email;
+        this.favoritesList=favoritesList;
     }
+
+
 
     public String getUserId() {
 
@@ -56,6 +62,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ArrayList<String> getFavoritesList() {
+        return favoritesList;
+    }
+
+    public void setFavoritesList(ArrayList<String> favoritesList) {
+        this.favoritesList = favoritesList;
     }
 
 }

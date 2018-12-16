@@ -10,9 +10,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import app.repbulic.order.orderrepublic.controllers.FavoritesController;
 import app.repbulic.order.orderrepublic.iu.main.MenuFragment;
 import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
 import app.repbulic.order.orderrepublic.iu.nav.AboutActivity;
@@ -21,6 +23,9 @@ import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -43,6 +48,19 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //I checked classes here, u can delete commented lines
+
+
+//        Log.d("check", "before favoritescreate");
+//        ArrayList<String> favs = new ArrayList<String>();
+//        favs.add("fdsfdsdfcx");
+//        favs.add("dfsfds");
+//        FavoritesController.createFavorites("-LTq1uzUTmvBLkR1H-Cq",favs);
+//        Log.d("check", "after favoritescreate");
+//        FavoritesController.readFavorites("-LTq1uzUTmvBLkR1H-Cq");
+//        Log.d("check", "after favoriteread");
     }
 
     @Override
