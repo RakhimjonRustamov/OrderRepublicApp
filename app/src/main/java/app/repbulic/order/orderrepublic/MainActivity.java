@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
+    public static String a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +52,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        //I checked classes here, u can delete commented lines
-
-
-//        Log.d("check", "before favoritescreate");
-//        ArrayList<String> favs = new ArrayList<String>();
-//        favs.add("fdsfdsdfcx");
-//        favs.add("dfsfds");
-//        FavoritesController.createFavorites("-LTq1uzUTmvBLkR1H-Cq",favs);
-//        Log.d("check", "after favoritescreate");
-//        FavoritesController.readFavorites("-LTq1uzUTmvBLkR1H-Cq");
-//        Log.d("check", "after favoriteread");
+        FavoritesController.readFavorites("-LTq1uzUTmvBLkR1H-Cq");
     }
 
     @Override

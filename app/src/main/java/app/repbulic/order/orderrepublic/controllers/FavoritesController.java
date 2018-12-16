@@ -1,7 +1,13 @@
 package app.repbulic.order.orderrepublic.controllers;
 
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -20,27 +26,25 @@ public class FavoritesController {
 
     //read
     public static boolean readFavorites(String userId) {
+        //get database reference
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        //add eventlistener to reference
+        dbref.child("favoritesList").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        //commented lines below are not working for now
+                for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
+                    String fav = favDataSnapshot.getValue(String.class);
+                    Log.d("favor", fav);
+                }
 
+            }
 
-//        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("favorites").child(userId);
-//        ValueEventListener postListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // Get Post object and use the values to update the UI
-//                User post = dataSnapshot.getValue(User.class);
-//                Log.d("check",post.toString());
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//                Log.w("check", "loadPost:onCancelled", databaseError.toException());
-//                // ...
-//            }
-//        };
-//        dbref.addValueEventListener(postListener);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         return true;
     }
 
