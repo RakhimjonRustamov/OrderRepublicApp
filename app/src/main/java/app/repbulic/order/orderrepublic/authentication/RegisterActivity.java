@@ -123,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void insertUser(FirebaseUser firebaseUser ){
+    private void insertUser(FirebaseUser firebaseUser){
         String firstName ="firstname";
         String lastName="lastname";
         boolean isOwner=false;

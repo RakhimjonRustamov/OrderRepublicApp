@@ -10,23 +10,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import app.repbulic.order.orderrepublic.controllers.FavoritesController;
-import app.repbulic.order.orderrepublic.iu.main.MenuFragment;
-import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
-import app.repbulic.order.orderrepublic.iu.nav.AboutActivity;
-import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
-import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
+import app.repbulic.order.orderrepublic.controllers.OrderController;
+import app.repbulic.order.orderrepublic.iu.main.MenuFragment;
+import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
+import app.repbulic.order.orderrepublic.iu.nav.AboutActivity;
+import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
+import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
+import app.repbulic.order.orderrepublic.models.Food;
+import app.repbulic.order.orderrepublic.models.Order;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    public static String a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +51,28 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        //order test
 
-        FavoritesController.readFavorites("-LTq1uzUTmvBLkR1H-Cq");
+//        ArrayList<Integer> quan = new ArrayList<>();
+//        quan.add(2);
+//        quan.add(1);
+//        Long a = Long.valueOf(12312), b = Long.valueOf(232143432);
+//        Order order = new Order(" ",
+//                "to Rahim",
+//                "mail@mail.ru",
+//                "Ziyolilar 9, M. Ulugbek, Tashkent",
+//                "received",
+//                "knock the door",
+//                a,
+//                b,
+//                Food.getDefaults(),
+//                quan,
+//                "-LTq1uzUTmvBLkR1H-Cq");
+//
+//        order.setOrderId(OrderController.createOrder(order));
+
+
+
     }
 
     @Override
@@ -91,7 +111,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment= MenuFragment.newInstance();
+        Fragment fragment = MenuFragment.newInstance();
         int id = item.getItemId();
 
         if (id == R.id.nav_favorites) {
@@ -99,12 +119,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_orders) {
-            fragment= OrdersFragment.newInstance();
+            fragment = OrdersFragment.newInstance();
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(MainActivity.this, AboutActivity.class));
-        }else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
-            Intent intent=new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
@@ -112,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.place_holder, fragment) .commit();
+        fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
         return true;
     }
 }

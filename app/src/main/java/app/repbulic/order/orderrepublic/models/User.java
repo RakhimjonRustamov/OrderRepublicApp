@@ -10,6 +10,7 @@ public class User {
     private String email;
     private ArrayList<String>favoritesList;
 
+
     public User(){}
 
     public User(String userId, String firstName, String lastName, boolean isOwner, String email, ArrayList<String> favoritesList) {
