@@ -16,17 +16,12 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
-import app.repbulic.order.orderrepublic.controllers.OrderController;
-import app.repbulic.order.orderrepublic.iu.main.MenuFragment;
 import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
-import app.repbulic.order.orderrepublic.iu.nav.AboutActivity;
+import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
+import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
 import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
 import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
-import app.repbulic.order.orderrepublic.models.Food;
-import app.repbulic.order.orderrepublic.models.Order;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -101,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_orders) {
             fragment = OrdersFragment.newInstance();
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            startActivity(new Intent(MainActivity.this, MenuActivity.class));
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);

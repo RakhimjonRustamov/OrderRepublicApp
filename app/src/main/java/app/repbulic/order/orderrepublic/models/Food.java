@@ -16,9 +16,6 @@ public class Food {
     private String restaurantName;
     private String restaurantLogoLink;
 
-    public Food() {
-    }
-
     public Food(String foodId, String foodName, String foodDesctiption, String price, String pictureLink, String category, double rating, String restaurantName, String restaurantLogoLink) {
         this.foodId = foodId;
         this.foodName = foodName;
