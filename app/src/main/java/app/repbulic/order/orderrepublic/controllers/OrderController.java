@@ -1,7 +1,13 @@
 package app.repbulic.order.orderrepublic.controllers;
 
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import app.repbulic.order.orderrepublic.models.Order;
 
@@ -18,21 +24,21 @@ public class OrderController {
         dbref.child(id).setValue(order);
         return id;
     }
-/*//
+
     //TODO:update ui when data received
-    //read foods or food when foodId is passed
-    public static void readFoods() {
+    //read orders or specific order when orderId is passed
+    public static void readOrders() {
         //get database reference
-        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food");
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("order");
         //add eventlistener to reference
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
-                    Food food = favDataSnapshot.getValue(Food.class);
-
-                    Log.d("foods", food.toString());
+                for (DataSnapshot orderDataSnapshot : dataSnapshot.getChildren()) {
+                    Order order = orderDataSnapshot.getValue(Order.class);
+                    //order.logger();
+                    //Log.d("foods", order.toString());
                 }
 
             }
@@ -44,16 +50,16 @@ public class OrderController {
         });
     }
 
-    public static void readFood(String foodId) {
+    public static void readOrder(String orderId) {
         //get database reference
-        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food").child(foodId);
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("order").child(orderId);
         //add eventlistener to reference
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Food food = dataSnapshot.getValue(Food.class);
-
+                Order order = dataSnapshot.getValue(Order.class);
+                // order.logger();
             }
 
             @Override
@@ -64,19 +70,17 @@ public class OrderController {
     }
 
 
-    //update food
-    //food can be updated only by owner users
+    //update order
+    //order can be updated only by owner users
 
-    public static void updateFood(final Food updatedFood) {
+    public static void updateOrder(final Order updatedOrder) {
         //get database reference
-        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food").child(updatedFood.getFoodId());
+        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("order").child(updatedOrder.getOrderId());
         //add eventlistener to reference
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                dbref.setValue(updatedFood);
-
+                dbref.setValue(updatedOrder);
             }
 
             @Override
@@ -86,15 +90,14 @@ public class OrderController {
         });
     }
 
-    //delete food
-    public static void deleteFood(String foodId) {
+    //delete order
+    public static void deleteOrder(String orderId) {
         //get database reference
-        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food").child(foodId);
+        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("order").child(orderId);
         //add eventlistener to reference
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
 
                 dbref.setValue(null);
             }
@@ -105,5 +108,5 @@ public class OrderController {
             }
         });
     }
-*/
+
 }

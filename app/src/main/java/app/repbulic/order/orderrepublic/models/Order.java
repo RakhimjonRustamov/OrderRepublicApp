@@ -1,5 +1,7 @@
 package app.repbulic.order.orderrepublic.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class Order {
@@ -18,7 +20,6 @@ public class Order {
 
     public Order() {
     }
-
 
 
     public Order(String orderId, String orderTitle, String userEmail, String address, String status, String specialGuidelines, Long receivedTime, Long doneTime, ArrayList<Food> foods, ArrayList<Integer> quantities, String userId) {
@@ -123,6 +124,7 @@ public class Order {
     public void setQuantities(ArrayList<Integer> quantities) {
         this.quantities = quantities;
     }
+
     public String getSpecialGuidelines() {
         return specialGuidelines;
     }
@@ -131,8 +133,7 @@ public class Order {
         this.specialGuidelines = specialGuidelines;
     }
 
-    public static ArrayList<Order> getDefaults()
-    {
+    public static ArrayList<Order> getDefaults() {
         ArrayList<Order> orders = new ArrayList<>();
         ArrayList<Integer> quan = new ArrayList<>();
         quan.add(2);
@@ -155,14 +156,25 @@ public class Order {
         return orders;
     }
 
-    public String calculateTotal()
-    {
+    public String calculateTotal() {
         String total;
-        int totalInt=0;
-        for (int i=0;i<this.getQuantities().size();i++) {
-            totalInt+= (Integer.parseInt(this.getFoods().get(i).getPrice()))*(this.getQuantities().get(i));
+        int totalInt = 0;
+        for (int i = 0; i < this.getQuantities().size(); i++) {
+            totalInt += (Integer.parseInt(this.getFoods().get(i).getPrice())) * (this.getQuantities().get(i));
         }
         total = String.valueOf(totalInt);
         return total;
+    }
+
+    public void logger() {
+        Log.d("order", this.getOrderId());
+        Log.d("order", this.getOrderTitle());
+        Log.d("order", this.getSpecialGuidelines());
+        Log.d("order", this.getAddress());
+        Log.d("order", this.getStatus());
+        Log.d("order", this.getTotalPrice());
+        Log.d("order", String.valueOf(this.getQuantities()));
+        Log.d("order", this.getUserEmail());
+        //Log.d("order", this.getUserId());
     }
 }

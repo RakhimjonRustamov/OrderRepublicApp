@@ -51,28 +51,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        //order test
-
-//        ArrayList<Integer> quan = new ArrayList<>();
-//        quan.add(2);
-//        quan.add(1);
-//        Long a = Long.valueOf(12312), b = Long.valueOf(232143432);
-//        Order order = new Order(" ",
-//                "to Rahim",
-//                "mail@mail.ru",
-//                "Ziyolilar 9, M. Ulugbek, Tashkent",
-//                "received",
-//                "knock the door",
-//                a,
-//                b,
-//                Food.getDefaults(),
-//                quan,
-//                "-LTq1uzUTmvBLkR1H-Cq");
-//
-//        order.setOrderId(OrderController.createOrder(order));
-
-
-
     }
 
     @Override

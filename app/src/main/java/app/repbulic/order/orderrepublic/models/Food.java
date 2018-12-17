@@ -1,6 +1,8 @@
 package app.repbulic.order.orderrepublic.models;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class Food {
@@ -125,5 +127,16 @@ public class Food {
         food.setRestaurantLogoLink("japana mama");
         foods.add(food);
         return foods;
+    }
+
+    public void logger()
+    {
+        Log.d("food", this.getFoodId());
+        Log.d("food", this.getFoodName());
+        Log.d("food", this.getFoodDesctiption());
+        Log.d("food", this.getCategory());
+        Log.d("food", this.getPrice());
+        Log.d("food", this.getRestaurantName());
+        Log.d("food", String.valueOf(this.getRating()));
     }
 }

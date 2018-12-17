@@ -1,5 +1,7 @@
 package app.repbulic.order.orderrepublic.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class User {
@@ -8,10 +10,11 @@ public class User {
     private String lastName;
     private boolean isOwner;
     private String email;
-    private ArrayList<String>favoritesList;
+    private ArrayList<String> favoritesList;
 
 
-    public User(){}
+    public User() {
+    }
 
     public User(String userId, String firstName, String lastName, boolean isOwner, String email, ArrayList<String> favoritesList) {
         this.userId = userId;
@@ -19,9 +22,8 @@ public class User {
         this.lastName = lastName;
         this.isOwner = isOwner;
         this.email = email;
-        this.favoritesList=favoritesList;
+        this.favoritesList = favoritesList;
     }
-
 
 
     public String getUserId() {
@@ -71,6 +73,15 @@ public class User {
 
     public void setFavoritesList(ArrayList<String> favoritesList) {
         this.favoritesList = favoritesList;
+    }
+
+
+    public void logger() {
+        Log.d("user", this.getFirstName());
+        Log.d("user", this.getLastName());
+        Log.d("user", this.getEmail());
+        Log.d("user", this.getFavoritesList().toString());
+        Log.d("user", String.valueOf(this.isOwner()));
     }
 
 }

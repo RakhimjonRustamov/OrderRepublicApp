@@ -35,10 +35,10 @@ public class FoodController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
-                    Food food = favDataSnapshot.getValue(Food.class);
-
-                    Log.d("foods", food.toString());
+                for (DataSnapshot foodDataSnapshot : dataSnapshot.getChildren()) {
+                    Food food = foodDataSnapshot.getValue(Food.class);
+                    //food.logger();
+                    //Log.d("foods", food.toString());
                 }
 
             }
@@ -59,7 +59,7 @@ public class FoodController {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Food food = dataSnapshot.getValue(Food.class);
-
+                //food.logger();
             }
 
             @Override
