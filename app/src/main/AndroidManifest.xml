@@ -25,8 +25,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
 
         <activity
@@ -37,7 +35,7 @@
             android:name="android.support.VERSION"
             android:value="26.1.0"
             tools:node="replace" />
-
+        <activity android:name=".iu.main.menu.MenuActivity" />
         <activity android:name=".iu.nav.ProfileActivity" />
         <activity android:name=".iu.nav.AboutActivity" />
         <activity android:name=".iu.nav.FavoritesActivity" />
