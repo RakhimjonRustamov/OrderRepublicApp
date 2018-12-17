@@ -4,17 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".iu.nav.ProfileActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar__profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
-
+    tools:context=".iu.EditProfileActivity"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,12 +20,12 @@
             android:text="First Name:"
             android:textSize="17dp" />
 
-        <TextView
-            android:id="@+id/first_name__profile"
+        <EditText
+            android:id="@+id/first_name__edit_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:text="here name"
+            android:hint="first name"
             android:textSize="17dp" />
     </LinearLayout>
 
@@ -51,12 +42,12 @@
             android:text="Last Name:"
             android:textSize="17dp" />
 
-        <TextView
-            android:id="@+id/last_name__profile"
+        <EditText
+            android:id="@+id/last_name__edit_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:text="here name"
+            android:hint="last name"
             android:textSize="17dp" />
     </LinearLayout>
 
@@ -73,12 +64,12 @@
             android:text="Email:"
             android:textSize="17dp" />
 
-        <TextView
-            android:id="@+id/email__profile"
+        <EditText
+            android:id="@+id/email__edit_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:text="here name"
+            android:hint="email"
             android:textSize="17dp" />
     </LinearLayout>
     <LinearLayout
@@ -88,19 +79,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:onClick="edit_profile_button_clicked"
+            android:onClick="cancel_button_clicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="edit details"
+            android:text="cancel changes"
             android:textSize="17dp" />
 
         <Button
-            android:onClick="delete_profile_button_clicked"
+            android:onClick="confirm_button_clicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="delete my account"
+            android:text="submit changes"
             android:textSize="17dp" />
     </LinearLayout>
 

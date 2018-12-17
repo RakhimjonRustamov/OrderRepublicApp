@@ -15,22 +15,21 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".authentication.LoginActivity"
-            android:label="@string/app_name">
-
-        </activity>
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
-
         <activity
             android:name=".authentication.RegisterActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
@@ -38,9 +37,17 @@
             android:value="26.1.0"
             tools:node="replace" />
 
-        <activity android:name=".iu.nav.ProfileActivity" />
-        <activity android:name=".iu.nav.AboutActivity" />
-        <activity android:name=".iu.nav.FavoritesActivity" />
+        <activity
+            android:name=".iu.nav.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.nav.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.nav.FavoritesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".iu.EditProfileActivity"
+            android:parentActivityName=".iu.nav.ProfileActivity"></activity>
     </application>
 
 </manifest>
