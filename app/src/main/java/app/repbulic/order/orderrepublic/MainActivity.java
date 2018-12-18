@@ -3,6 +3,7 @@ package app.repbulic.order.orderrepublic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
 import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
+import app.repbulic.order.orderrepublic.iu.main.RestaurantsFragment;
 import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
 import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
 import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+    @BindView(R.id.bottomNavigationView)
+    BottomNavigationView bottomNavigation;
 
 
     @Override
@@ -46,8 +50,11 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        setUpApp();
+        if (savedInstanceState == null) {
+            bottomNavigation.setSelectedItemId(R.id.action_menu); // change to whichever id should be default
+        }
 
-        //check
     }
 
     @Override
@@ -60,26 +67,34 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void setUpApp() {
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
+                switch (item.getItemId()) {
+                    case R.id.action_order:
+                        fragment = OrdersFragment.newInstance();
+                        break;
+                    case R.id.action_menu:
+                        fragment = MenuFragment.newInstance();
+                        break;
+                    case R.id.action_restaurant:
+                        fragment = RestaurantsFragment.newInstance();
+                        break;
+                }
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
+                return true;
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

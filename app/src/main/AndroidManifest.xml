@@ -38,6 +38,9 @@
             tools:node="replace" />
 
         <activity
+          android:name=".iu.main.menu.MenuActivity"
+          android:screenOrientation="portrait" />
+        <activity
             android:name=".iu.nav.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
