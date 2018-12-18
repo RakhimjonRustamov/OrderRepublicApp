@@ -1,7 +1,9 @@
 package app.repbulic.order.orderrepublic.controllers;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -10,6 +12,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import app.repbulic.order.orderrepublic.adapters.FoodAdapter;
+import app.repbulic.order.orderrepublic.models.Food;
 
 public class FavoritesController {
 
@@ -25,7 +31,7 @@ public class FavoritesController {
 
     //TODO:update ui when data received
     //read
-    public static void readFavorites(String userId) {
+    public static void readFavorites(String userId, final ListView favoritesList, final Context context) {
         //get database reference
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("users").child(userId);
         //add eventlistener to reference
@@ -33,9 +39,17 @@ public class FavoritesController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                List<Food> foods;
+                FoodAdapter foodAdapter;
                 for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
                     String fav = favDataSnapshot.getValue(String.class);
                     Log.d("favor", fav);
+
+
+                    foods = Food.getDefaults();
+                    foodAdapter = new FoodAdapter(context, foods);
+                    favoritesList.setAdapter(foodAdapter);
+
                 }
 
             }
