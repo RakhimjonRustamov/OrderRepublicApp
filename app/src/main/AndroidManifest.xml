@@ -37,20 +37,12 @@
             android:value="26.1.0"
             tools:node="replace" />
 
-        <activity
-          android:name=".iu.main.menu.MenuActivity"
-          android:screenOrientation="portrait" />
-        <activity
-            android:name=".iu.nav.ProfileActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".iu.nav.AboutActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".iu.nav.FavoritesActivity"
-            android:screenOrientation="portrait" />
         <activity android:name=".iu.EditProfileActivity"
-            android:parentActivityName=".iu.nav.ProfileActivity"></activity>
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

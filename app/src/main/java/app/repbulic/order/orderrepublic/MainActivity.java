@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,11 +16,11 @@ import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
 
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
-import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
+import app.repbulic.order.orderrepublic.iu.nav.FavoritesFragment;
 //import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
 //import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
-import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
-import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
+//import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
+import app.repbulic.order.orderrepublic.iu.nav.ProfileFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-
+    private String userId ="-LTq1uzUTmvBLkR1H-Cq";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,11 +89,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_favorites) {
-            startActivity(new Intent(MainActivity.this, FavoritesActivity.class));
+            //sending data to fragment
+            Bundle data= new Bundle();
+            data.putString("userId", userId);
+            FavoritesFragment favoritesFragment = new FavoritesFragment();
+            favoritesFragment.setArguments(data);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().add(R.id.place_holder, favoritesFragment).commit();
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            //sending data to fragment
+            Bundle data= new Bundle();
+            data.putString("userId", userId);
+            ProfileFragment profileFragment = new ProfileFragment();
+            profileFragment.setArguments(data);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().add(R.id.place_holder, profileFragment).commit();
         } else if (id == R.id.nav_orders) {
-          //  fragment = OrdersFragment.newInstance();
+            //fragment = OrdersFragment.newInstance();
         } else if (id == R.id.nav_about) {
            // startActivity(new Intent(MainActivity.this, MenuActivity.class));
         } else if (id == R.id.nav_logout) {

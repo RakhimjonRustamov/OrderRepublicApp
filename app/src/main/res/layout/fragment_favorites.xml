@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".iu.FavoritesFragment">
+    tools:context=".iu.nav.FavoritesFragment">
 
     <ListView
         android:id="@+id/favorites_list"

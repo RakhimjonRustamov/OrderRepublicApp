@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import app.repbulic.order.orderrepublic.R;
 import app.repbulic.order.orderrepublic.controllers.UserController;
-import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -39,18 +39,16 @@ public class FavoritesController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                List<Food> foods;
-                FoodAdapter foodAdapter;
+
+                ArrayList<String> favs = new ArrayList<>();
+
                 for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
                     String fav = favDataSnapshot.getValue(String.class);
                     Log.d("favor", fav);
-
-
-                    foods = Food.getDefaults();
-                    foodAdapter = new FoodAdapter(context, foods);
-                    favoritesList.setAdapter(foodAdapter);
-
+                    favs.add(fav);
                 }
+                FoodController.readFoods(favoritesList, context,favs);
+
 
             }
 

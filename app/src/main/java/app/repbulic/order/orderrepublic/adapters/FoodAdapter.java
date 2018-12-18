@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import app.repbulic.order.orderrepublic.R;
@@ -16,9 +17,9 @@ import app.repbulic.order.orderrepublic.models.Food;
 
 public class FoodAdapter extends ArrayAdapter {
 
-    private List<Food> foods;
+    private ArrayList<Food> foods;
 
-    public FoodAdapter(@NonNull Context context, @NonNull List<Food> foods) {
+    public FoodAdapter(@NonNull Context context, @NonNull ArrayList<Food> foods) {
         super(context, R.layout.favorites_list_item);
         this.foods = foods;
 
