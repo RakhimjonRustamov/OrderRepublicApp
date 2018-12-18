@@ -1,23 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
   android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".iu.main.menu.MenuFragment">
+  tools:context=".iu.main.menu.MenuFragment">
 
   <com.smarteist.autoimageslider.SliderLayout
+    android:id="@+id/imageSlider"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_alignParentTop="true"
-    android:id="@+id/imageSlider"/>
+    android:layout_height="250dp"
+    android:layout_alignParentTop="true" />
 
-    <TextView
-      android:text="Menu"
-      android:gravity="center"
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:gravity="center"
+    android:text="MENU"
+    android:textSize="20sp"
+    android:textStyle="bold" />
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
+      android:layout_height="match_parent"
+      android:orientation="vertical">
 
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_dessert"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
 
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textSize="24sp"
+          android:textColor="@color/background"/>
+         </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_meals"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
+
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textColor="@color/background"
+          android:textSize="24sp"
+          app:layout_constraintStart_toStartOf="@+id/category_meals" />
+      </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_pizza"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
+
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textColor="@color/background"
+          android:textSize="24sp"
+          app:layout_constraintStart_toStartOf="@+id/category_pizza" />
+      </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_drinks"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textColor="@color/background"
+          android:textSize="24sp"
+          app:layout_constraintStart_toStartOf="@+id/category_drinks" />
+      </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_salads"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
+
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textColor="@color/background"
+          android:textSize="24sp"
+          app:layout_constraintStart_toStartOf="@+id/category_salads" />
+      </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_burgers"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
+
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textColor="@color/background"
+          android:textSize="24sp"
+          app:layout_constraintStart_toStartOf="@+id/category_burgers" />
+      </android.support.constraint.ConstraintLayout>
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/category_breakfast"
+        android:onClick="getCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/login_back" />
+
+        <TextView
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:text="Dessert"
+          android:textColor="@color/background"
+          android:textSize="24sp"
+          app:layout_constraintStart_toStartOf="@+id/category_breakfast" />
+      </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+  </ScrollView>
 </LinearLayout>
