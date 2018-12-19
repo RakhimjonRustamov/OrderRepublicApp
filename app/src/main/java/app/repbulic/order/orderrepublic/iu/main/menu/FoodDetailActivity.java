@@ -23,6 +23,7 @@ public class FoodDetailActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     setContentView(R.layout.activity_food_detail);
     toolbar =findViewById(R.id.toolbar);
+
     setSupportActionBar(toolbar);
     if(getSupportActionBar()!=null){
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
