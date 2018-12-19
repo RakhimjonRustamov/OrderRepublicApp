@@ -23,7 +23,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,13 +35,17 @@
             android:name="android.support.VERSION"
             android:value="26.1.0"
             tools:node="replace" />
-
-
+        <activity
+          android:name=".iu.main.menu.MenuActivity"
+          android:screenOrientation="portrait" />
         <activity
             android:name=".iu.nav.AboutActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".iu.EditProfileActivity"
             android:parentActivityName=".MainActivity"></activity>
+        <activity
+          android:name=".iu.main.menu.FoodDetailActivity"
+          android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
