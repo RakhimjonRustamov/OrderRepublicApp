@@ -1,11 +1,13 @@
 package app.repbulic.order.orderrepublic.iu.main.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,75 +18,120 @@ import app.repbulic.order.orderrepublic.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CategoriesFragment extends Fragment {
-    @BindView(R.id.imageSlider) SliderLayout sliderLayout;
+public class CategoriesFragment extends Fragment implements View.OnClickListener {
+  @BindView(R.id.imageSlider)
+  SliderLayout sliderLayout;
+  @BindView(R.id.category_pizza)
+  Button buttonPizza;
+  @BindView(R.id.category_burgers)
+  Button buttonBurgers;
+  @BindView(R.id.category_coffee)
+  Button buttonCoffee;
+  @BindView(R.id.category_desserts)
+  Button buttonDesserts;
+  @BindView(R.id.category_nfoods)
+  Button buttonNfoods;
+  @BindView(R.id.category_breakfast)
+  Button buttonBreakfast;
+  private String choosenCategory;
 
-    public CategoriesFragment() {
+  public CategoriesFragment() {
+  }
+
+  public static CategoriesFragment newInstance() {
+    CategoriesFragment fragment = new CategoriesFragment();
+    return fragment;
+  }
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    setUpListeners();
+    sliderLayout.setIndicatorAnimation(SliderLayout.Animations.FILL); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+    sliderLayout.setScrollTimeInSec(1); //set scroll delay in seconds :
+    setSliderViews();
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_menu, container, false);
+    ButterKnife.bind(this, view);
+
+    return view;
+  }
+
+  @Override
+  public void onClick(View v) {
+    switch (v.getId()) {
+      case R.id.category_breakfast:
+        choosenCategory="breakfast";
+        break;
+      case R.id.category_burgers:
+        choosenCategory="burgers";
+        break;
+      case R.id.category_pizza:
+        choosenCategory="pizza";
+        break;
+      case R.id.category_coffee:
+        choosenCategory="coffee";
+        break;
+      case R.id.category_nfoods:
+        choosenCategory="nfoods";
+        break;
+      case R.id.category_desserts:
+        choosenCategory="desserts";
+        break;
     }
+    Intent intent = new Intent(getContext(), MenuActivity.class);
+    intent.putExtra("category_name", choosenCategory);
+    startActivity(intent);
+  }
 
-    public static CategoriesFragment newInstance() {
-        CategoriesFragment fragment = new CategoriesFragment();
-        return fragment;
-    }
+  private void setSliderViews() {
+    for (int i = 0; i <= 3; i++) {
+      SliderView sliderView = new SliderView(getContext());
+      switch (i) {
+        case 0:
+          sliderView.setImageUrl("https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          break;
+        case 1:
+          sliderView.setImageUrl("https://images.pexels.com/photos/218983/pexels-photo-218983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          break;
+        case 2:
+          sliderView.setImageUrl("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+          break;
+        case 3:
+          sliderView.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          break;
+      }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Toast.makeText(getActivity(), "INSIDE Menu Fragment FRAGMENT", Toast.LENGTH_LONG).show();
-        sliderLayout.setIndicatorAnimation(SliderLayout.Animations.FILL); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
-        sliderLayout.setScrollTimeInSec(1); //set scroll delay in seconds :
-        setSliderViews();  
-    }
-
-    private void setSliderViews() {
-        for (int i = 0; i <= 3; i++) {
-
-            SliderView sliderView = new SliderView(getContext());
-
-            switch (i) {
-                case 0:
-                    sliderView.setImageUrl("https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-                    break;
-                case 1:
-                    sliderView.setImageUrl("https://images.pexels.com/photos/218983/pexels-photo-218983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-                    break;
-                case 2:
-                    sliderView.setImageUrl("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
-                    break;
-                case 3:
-                    sliderView.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-                    break;
-            }
-
-            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-            sliderView.setDescription("setDescription " + (i + 1));
-            final int finalI = i;
-            sliderView.setOnSliderClickListener(new SliderView.OnSliderClickListener() {
-                @Override
-                public void onSliderClick(SliderView sliderView) {
-                    Toast.makeText(getActivity(), "This is slider " + (finalI + 1), Toast.LENGTH_SHORT).show();
-                }
-            });
-            sliderLayout.addSliderView(sliderView);
+      sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+      sliderView.setDescription("setDescription " + (i + 1));
+      final int finalI = i;
+      sliderView.setOnSliderClickListener(new SliderView.OnSliderClickListener() {
+        @Override
+        public void onSliderClick(SliderView sliderView) {
+          Toast.makeText(getActivity(), "This is slider " + (finalI + 1), Toast.LENGTH_SHORT).show();
         }
+      });
+      sliderLayout.addSliderView(sliderView);
     }
+  }
+
+  private void setUpListeners() {
+    buttonPizza.setOnClickListener(this);
+    buttonBurgers.setOnClickListener(this);
+    buttonCoffee.setOnClickListener(this);
+    buttonDesserts.setOnClickListener(this);
+    buttonNfoods.setOnClickListener(this);
+    buttonBreakfast.setOnClickListener(this);
+  }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_menu, container, false);
-        ButterKnife.bind(this,view);
-        return view;
-    }
-
-    private void getCategory(View view)
-    {
-
-    }
 }
