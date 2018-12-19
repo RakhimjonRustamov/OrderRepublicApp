@@ -8,7 +8,7 @@
   android:layout_height="215dp">
 
   <android.support.v7.widget.CardView
-    android:id="@+id/category_cardview"
+    android:id="@+id/food_cardview"
     android:layout_width="0dp"
     android:layout_height="192dp"
     android:layout_marginBottom="20dp"
@@ -91,9 +91,9 @@
     android:textAlignment="center"
     android:paddingBottom="5dp"
     android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="@+id/category_cardview"
+    app:layout_constraintBottom_toBottomOf="@+id/food_cardview"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/category_cardview"
+    app:layout_constraintTop_toBottomOf="@+id/food_cardview"
     app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

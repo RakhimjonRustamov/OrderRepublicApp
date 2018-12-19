@@ -8,5 +8,6 @@
     <color name="darkGreen">#035017</color>
     <color name="appColor">#23283a</color>
     <color name="appColorSecond">#fe104d</color>
-    
+  <color name="colorPrimaryText">#050505</color>
+
 </resources>
