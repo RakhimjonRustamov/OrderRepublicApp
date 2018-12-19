@@ -16,14 +16,14 @@ import app.repbulic.order.orderrepublic.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MenuFragment extends Fragment {
+public class CategoriesFragment extends Fragment {
     @BindView(R.id.imageSlider) SliderLayout sliderLayout;
 
-    public MenuFragment() {
+    public CategoriesFragment() {
     }
 
-    public static MenuFragment newInstance() {
-        MenuFragment fragment = new MenuFragment();
+    public static CategoriesFragment newInstance() {
+        CategoriesFragment fragment = new CategoriesFragment();
         return fragment;
     }
 

@@ -20,16 +20,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
 import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
 import app.repbulic.order.orderrepublic.iu.main.RestaurantsFragment;
+import app.repbulic.order.orderrepublic.iu.main.menu.CategoriesFragment;
 import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
-import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
 import app.repbulic.order.orderrepublic.iu.nav.FavoritesFragment;
 import app.repbulic.order.orderrepublic.iu.nav.ProfileFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
-//import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
-//import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +39,8 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.bottomNavigationView)
     BottomNavigationView bottomNavigation;
 
-    private String userId ="-LTq1uzUTmvBLkR1H-Cq";
+    private String userId = "-LTq1uzUTmvBLkR1H-Cq";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity
                         fragment = OrdersFragment.newInstance();
                         break;
                     case R.id.action_menu:
-                        fragment = MenuFragment.newInstance();
+                        fragment = CategoriesFragment.newInstance();
                         break;
                     case R.id.action_restaurant:
                         fragment = RestaurantsFragment.newInstance();
@@ -83,6 +81,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -119,25 +118,16 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = MenuFragment.newInstance();
+        Fragment fragment = CategoriesFragment.newInstance();
         int id = item.getItemId();
-
+        Bundle data = new Bundle();
+        data.putString("userId", userId);
         if (id == R.id.nav_favorites) {
-            //sending data to fragment
-            Bundle data= new Bundle();
-            data.putString("userId", userId);
-            FavoritesFragment favoritesFragment = new FavoritesFragment();
-            favoritesFragment.setArguments(data);
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().add(R.id.place_holder, favoritesFragment).commit();
+            fragment = new FavoritesFragment();
+            fragment.setArguments(data);
         } else if (id == R.id.nav_profile) {
-            //sending data to fragment
-            Bundle data= new Bundle();
-            data.putString("userId", userId);
-            ProfileFragment profileFragment = new ProfileFragment();
-            profileFragment.setArguments(data);
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().add(R.id.place_holder, profileFragment).commit();
+            fragment = new ProfileFragment();
+            fragment.setArguments(data);
         } else if (id == R.id.nav_orders) {
             fragment = OrdersFragment.newInstance();
         } else if (id == R.id.nav_about) {
@@ -149,7 +139,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         }
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();

@@ -41,6 +41,12 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
+    // TODO: Rename and change types and number of parameters
+    public static ProfileFragment newInstance() {
+        ProfileFragment fragment = new ProfileFragment();
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

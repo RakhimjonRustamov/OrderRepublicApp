@@ -29,6 +29,7 @@ public class FavoritesController {
     }
 
 
+
     //TODO:update ui when data received
     //read
     public static void readFavorites(String userId, final ListView favoritesList, final Context context) {

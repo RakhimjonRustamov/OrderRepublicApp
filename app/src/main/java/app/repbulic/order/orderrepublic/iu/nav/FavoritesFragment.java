@@ -25,6 +25,11 @@ public class FavoritesFragment extends Fragment {
         // Required empty public constructor
     }
 
+    // TODO: Rename and change types and number of parameters
+    public static FavoritesFragment newInstance() {
+        FavoritesFragment fragment = new FavoritesFragment();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
