@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,18 +23,18 @@ import butterknife.ButterKnife;
 public class CategoriesFragment extends Fragment implements View.OnClickListener {
   @BindView(R.id.imageSlider)
   SliderLayout sliderLayout;
-  @BindView(R.id.category_pizza)
-  Button buttonPizza;
+  @BindView(R.id.category_pizza__menu)
+  CardView buttonPizza;
   @BindView(R.id.category_burgers)
-  Button buttonBurgers;
+  CardView buttonBurgers;
   @BindView(R.id.category_coffee)
-  Button buttonCoffee;
+  CardView buttonCoffee;
   @BindView(R.id.category_desserts)
-  Button buttonDesserts;
+  CardView buttonDesserts;
   @BindView(R.id.category_nfoods)
-  Button buttonNfoods;
+  CardView buttonNfoods;
   @BindView(R.id.category_breakfast)
-  Button buttonBreakfast;
+  CardView buttonBreakfast;
   private String choosenCategory;
 
   public CategoriesFragment() {
@@ -51,7 +53,7 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    setUpListeners();
+    //setUpListeners();
     sliderLayout.setIndicatorAnimation(SliderLayout.Animations.FILL); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
     sliderLayout.setScrollTimeInSec(1); //set scroll delay in seconds :
     setSliderViews();
@@ -62,7 +64,7 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
                            Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_menu, container, false);
     ButterKnife.bind(this, view);
-
+    setUpListeners();
     return view;
   }
 
@@ -75,7 +77,7 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
       case R.id.category_burgers:
         choosenCategory="burgers";
         break;
-      case R.id.category_pizza:
+      case R.id.category_pizza__menu:
         choosenCategory="pizza";
         break;
       case R.id.category_coffee:
@@ -85,7 +87,7 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
         choosenCategory="nfoods";
         break;
       case R.id.category_desserts:
-        choosenCategory="desserts";
+        choosenCategory="desert";
         break;
     }
     Intent intent = new Intent(getContext(), MenuActivity.class);

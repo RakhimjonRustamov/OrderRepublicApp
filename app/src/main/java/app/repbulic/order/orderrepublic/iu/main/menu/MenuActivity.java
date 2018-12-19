@@ -28,13 +28,13 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = new Intent();
-        categoryName = intent.getStringExtra("category_name");
+        categoryName = getIntent().getStringExtra("category_name");
         ButterKnife.bind(this);
         initMenu();
     }
 
     private void initMenu() {
-        FoodController.readFoodsByCategory("entree", recyclerView, getApplicationContext());
+        FoodController.readFoodsByCategory(categoryName, recyclerView, getApplicationContext());
 
     }
 
