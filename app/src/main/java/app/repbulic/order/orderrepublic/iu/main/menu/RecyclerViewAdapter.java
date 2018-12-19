@@ -14,19 +14,21 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.List;
 
 import app.repbulic.order.orderrepublic.R;
 import app.repbulic.order.orderrepublic.models.Food;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
   private static final String TAG="RecyclerViewAdapter";
   private Context rcontext;
   private List<Food> foodList;
-  RecyclerViewAdapter(Context context, List<Food> list)
+  public RecyclerViewAdapter(Context context, List<Food> list)
   {
     this.foodList=list;
     this.rcontext=context;
@@ -55,8 +57,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
       @Override
       public void onClick(View v) {
         Intent intent = new Intent(rcontext, FoodDetailActivity.class);
+        intent.putExtra("food", foodList.get(position));
         rcontext.startActivity(intent);
-        Toast.makeText(rcontext, "Food Name"+foodList.get(position).getFoodName(), Toast.LENGTH_LONG).show();
+        Toast.makeText(rcontext, "Food Name: "+foodList.get(position).getFoodName(), Toast.LENGTH_LONG).show();
       }
     });
   }
@@ -68,7 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
   public class ViewHolder extends RecyclerView.ViewHolder{
-    @BindView(R.id.food_image)ImageView circleImageView;
+    @BindView(R.id.food_image)CircleImageView circleImageView;
     @BindView(R.id.food_name) TextView foodName;
     @BindView(R.id.restaurantName) TextView restaurantName;
     @BindView(R.id.food_price)TextView foodPrice;

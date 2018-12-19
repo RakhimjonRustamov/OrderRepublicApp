@@ -3,9 +3,10 @@ package app.repbulic.order.orderrepublic.models;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Food {
+public class Food implements Serializable {
     private String foodId;
     private String foodName;
     private String foodDesctiption;
@@ -110,7 +111,7 @@ public class Food {
                 "osh",
                 "rice and meat",
                 "7000",
-                "oshlink",
+                "http://www.loook.uz/uploads/thumbs/store/product/190x150_4adaa8dbda3eb6eabebef0c5ecd21f1b.png",
                 "entreee",
                 4.5,
                 "Rayhon",
@@ -120,7 +121,7 @@ public class Food {
                 "sushi",
                 "rice and fish",
                 "70000",
-                "sushilink",
+                "https://c-lj.gnst.jp/public/article/detail/a/00/01/a0001909/img/basic/a0001909_main.jpg?20180216182747",
                 "entreee",
                 4.5,
                 "Japana mama",
