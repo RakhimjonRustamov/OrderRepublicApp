@@ -1,39 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".iu.main.ProfileFragment">
+    android:orientation="vertical"
+    tools:context=".iu.nav.ProfileFragment">
 
-  <TextView
-      android:textSize="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello I am fragment"/>
-  <TextView
-      android:textSize="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello I am fragment"/>
-  <TextView
-      android:textSize="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello I am fragment"/>
-  <TextView
-      android:textSize="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello I am fragment"/>
-  <TextView
-      android:textSize="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello I am fragment"/>
-  <TextView
-      android:textSize="20dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello I am fragment"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="First Name:"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/first_name__profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:text="here name"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Last Name:"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/last_name__profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:text="here name"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Email:"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/email__profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:text="here name"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/edit_details_button__profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="edit details"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/delete_account_button__profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="delete my account"
+            android:textSize="17dp" />
+    </LinearLayout>
 </LinearLayout>

@@ -16,6 +16,9 @@ public class Food {
     private String restaurantName;
     private String restaurantLogoLink;
 
+    //firebase requires it!
+    public Food(){}
+
     public Food(String foodId, String foodName, String foodDesctiption, String price, String pictureLink, String category, double rating, String restaurantName, String restaurantLogoLink) {
         this.foodId = foodId;
         this.foodName = foodName;
@@ -102,7 +105,7 @@ public class Food {
 
     public static ArrayList<Food> getDefaults() {
         ArrayList<Food> foods = new ArrayList<Food>();
-        Food food = new Food(
+        Food food1 = new Food(
                 "-LTra7xYft_4merocAoL",
                 "osh",
                 "rice and meat",
@@ -112,17 +115,18 @@ public class Food {
                 4.5,
                 "Rayhon",
                 "Rayhon logo");
-        foods.add(food);
-        food.setFoodId("-LTr_vGHijvuDW95r0zv");
-        food.setFoodName("sushi");
-        food.setFoodDesctiption("rice and fish");
-        food.setPrice("70000");
-        food.setPictureLink("sushilink");
-        food.setCategory("entree");
-        food.setRating(4.9);
-        food.setRestaurantName("japana mama");
-        food.setRestaurantLogoLink("japana mama");
-        foods.add(food);
+        Food food2 = new Food(
+                "-LTr_vGHijvuDW95r0zv",
+                "sushi",
+                "rice and fish",
+                "70000",
+                "sushilink",
+                "entreee",
+                4.5,
+                "Japana mama",
+                "Rayhon logo");
+        foods.add(food1);
+        foods.add(food2);
         return foods;
     }
 

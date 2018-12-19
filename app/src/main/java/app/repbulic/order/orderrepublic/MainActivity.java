@@ -3,9 +3,7 @@ package app.repbulic.order.orderrepublic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,12 +16,11 @@ import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
 
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
-import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
-import app.repbulic.order.orderrepublic.iu.main.RestaurantsFragment;
-import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
-import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
-import app.repbulic.order.orderrepublic.iu.nav.FavoritesActivity;
-import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
+import app.repbulic.order.orderrepublic.iu.nav.FavoritesFragment;
+//import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
+//import app.repbulic.order.orderrepublic.iu.main.menu.MenuFragment;
+//import app.repbulic.order.orderrepublic.iu.nav.ProfileActivity;
+import app.repbulic.order.orderrepublic.iu.nav.ProfileFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,10 +32,8 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-    @BindView(R.id.bottomNavigationView)
-    BottomNavigationView bottomNavigation;
 
-
+    private String userId ="-LTq1uzUTmvBLkR1H-Cq";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +45,8 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        setUpApp();
-        if (savedInstanceState == null) {
-            bottomNavigation.setSelectedItemId(R.id.action_menu); // change to whichever id should be default
-        }
 
+        //check
     }
 
     @Override
@@ -67,29 +59,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void setUpApp() {
-        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
-                switch (item.getItemId()) {
-                    case R.id.action_order:
-                        fragment = OrdersFragment.newInstance();
-                        break;
-                    case R.id.action_menu:
-                        fragment = MenuFragment.newInstance();
-                        break;
-                    case R.id.action_restaurant:
-                        fragment = RestaurantsFragment.newInstance();
-                        break;
-                }
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
-                return true;
-            }
-        });
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -97,21 +66,48 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = MenuFragment.newInstance();
+        //Fragment fragment = MenuFragment.newInstance();
         int id = item.getItemId();
 
         if (id == R.id.nav_favorites) {
-            startActivity(new Intent(MainActivity.this, FavoritesActivity.class));
+            //sending data to fragment
+            Bundle data= new Bundle();
+            data.putString("userId", userId);
+            FavoritesFragment favoritesFragment = new FavoritesFragment();
+            favoritesFragment.setArguments(data);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().add(R.id.place_holder, favoritesFragment).commit();
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            //sending data to fragment
+            Bundle data= new Bundle();
+            data.putString("userId", userId);
+            ProfileFragment profileFragment = new ProfileFragment();
+            profileFragment.setArguments(data);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().add(R.id.place_holder, profileFragment).commit();
         } else if (id == R.id.nav_orders) {
-            fragment = OrdersFragment.newInstance();
+            //fragment = OrdersFragment.newInstance();
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(MainActivity.this, MenuActivity.class));
+           // startActivity(new Intent(MainActivity.this, MenuActivity.class));
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -122,7 +118,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
+       // fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
         return true;
     }
 }
