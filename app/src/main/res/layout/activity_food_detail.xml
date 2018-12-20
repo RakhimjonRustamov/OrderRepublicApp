@@ -86,7 +86,6 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:layout_weight="0.4"
                         android:paddingLeft="8dp"
                         android:paddingTop="8dp"
@@ -96,9 +95,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/price__food_detail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
+                        android:layout_marginTop="4dp"
                         android:paddingTop="8dp"
                         android:text="$10.0"
                         android:textColor="@color/colorPrimaryText"
@@ -116,17 +117,18 @@
                         android:layout_marginTop="4dp"
                         android:paddingLeft="8dp"
                         android:paddingTop="8dp"
-                        android:text="Address"
+                        android:text="Restaurant Name"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/restaurantName__food_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:paddingLeft="4dp"
-                        android:text="Metro Buyuk Ipak Yo'li, Sayohat Mehmonxonasi Bekati"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="8dp"
+                        android:text="default"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -142,61 +144,24 @@
                         android:layout_marginTop="4dp"
                         android:paddingLeft="8dp"
                         android:paddingTop="8dp"
-                        android:text="Landmarks"
+                        android:text="Rating"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
-
+                        android:textStyle="bold"/>
                     <TextView
+                        android:id="@+id/rating_info__food_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:paddingLeft="4dp"
-                        android:text="Sayohat Mehmonxonasi"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:paddingLeft="8dp"
-                        android:paddingTop="8dp"
-                        android:text="Service Charge"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:paddingLeft="4dp"
-                        android:text="0%"
+                        android:text="4.9"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp" />
                 </LinearLayout>
-
+<!--
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/elegant_text__food_detail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
                     <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                         android:id="@+id/elegant_button__food_detail"
                         android:layout_width="match_parent"
@@ -204,19 +169,39 @@
                         android:gravity="center"
                         app:backGroundColor="@color/colorAccent"
                         app:finalNumber="100"></com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
-                </LinearLayout>
+
+                </LinearLayout>-->
+                        <Button
+                          android:id="@+id/addTocart__food_detail"
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginTop="30dp"
+                          android:gravity="center"
+                          android:text="Add To Cart"
+                          android:textColor="@color/background"
+                          android:background="@color/appColor"
+                          android:elevation="6dp"
+                          android:textAlignment="center"
+                          android:paddingBottom="5dp"
+                          android:textStyle="bold"
+                        />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </android.support.v4.widget.NestedScrollView>
-
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/ic_shipped"
-        app:elevation="6dp"
-        app:layout_anchor="@+id/deatail_cardview"
-        app:layout_anchorGravity="bottom|center|end"
-        app:pressedTranslationZ="12dp" />
+      android:id="@+id/favButton__food_detail"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginRight="30dp"
+      android:src="@drawable/ic_favorite_empty"
+      app:elevation="6dp"
+      app:layout_anchor="@+id/food_image__food_detail"
+      app:layout_anchorGravity="bottom|center|end"
+      app:pressedTranslationZ="12dp" />
 </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+

@@ -14,14 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
-import app.repbulic.order.orderrepublic.iu.main.OrdersFragment;
 import app.repbulic.order.orderrepublic.iu.main.RestaurantsFragment;
 import app.repbulic.order.orderrepublic.iu.main.menu.CategoriesFragment;
 import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
+import app.repbulic.order.orderrepublic.iu.main.orders.OrdersFragment;
 import app.repbulic.order.orderrepublic.iu.nav.FavoritesFragment;
 import app.repbulic.order.orderrepublic.iu.nav.ProfileFragment;
 import butterknife.BindView;
@@ -29,7 +31,7 @@ import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.drawer_layout)
@@ -38,9 +40,12 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     @BindView(R.id.bottomNavigationView)
     BottomNavigationView bottomNavigation;
+    @BindView(R.id.cart__main)
+    ImageView clickableCartIcon;
 
     private String userId = "-LTq1uzUTmvBLkR1H-Cq";
-
+    private FragmentManager fragmentManager;
+    private Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,19 +56,20 @@ public class MainActivity extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        fragmentManager = getSupportFragmentManager();
         navigationView.setNavigationItemSelectedListener(this);
+        clickableCartIcon.setOnClickListener(this);
         setUpApp();
         if (savedInstanceState == null) {
             bottomNavigation.setSelectedItemId(R.id.action_menu); // change to whichever id should be default
         }
-        //check
     }
 
     private void setUpApp() {
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
+                fragment = null;
                 switch (item.getItemId()) {
                     case R.id.action_order:
                         fragment = OrdersFragment.newInstance();
@@ -75,7 +81,6 @@ public class MainActivity extends AppCompatActivity
                         fragment = RestaurantsFragment.newInstance();
                         break;
                 }
-                FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
                 return true;
             }
@@ -117,7 +122,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment = CategoriesFragment.newInstance();
+        fragment = CategoriesFragment.newInstance();
         int id = item.getItemId();
         Bundle data = new Bundle();
         data.putString("userId", userId);
@@ -140,8 +145,17 @@ public class MainActivity extends AppCompatActivity
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.place_holder, fragment).commit();
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.cart__main:
+
+            break;
+        }
     }
 }
