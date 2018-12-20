@@ -49,6 +49,32 @@
                 app:layout_constraintTop_toBottomOf="@+id/menu_text">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/category_national__menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_text">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/rsz_plov" />
+
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="National
+"
+                        android:textColor="@color/background"
+                        android:textSize="24sp" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
                     android:id="@+id/category_pizza__menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,7 +100,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/category_burgers"
+                    android:id="@+id/category_burgers__menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
@@ -100,7 +126,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/category_coffee"
+                    android:id="@+id/category_coffee__menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
@@ -115,7 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/login_back" />
+                        android:src="@drawable/rsz_coffee" />
 
                     <TextView
                         android:layout_width="130dp"
@@ -126,7 +152,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/category_breakfast"
+                    android:id="@+id/category_drinks__menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
@@ -141,18 +167,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/funny_sweets" />
+                        android:src="@drawable/rsz_drinks" />
 
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:text="Breakfast"
+                        android:text="Drinks"
                         android:textColor="@color/background"
                         android:textSize="24sp" />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/category_desserts"
+                    android:id="@+id/category_deserts__menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
@@ -167,18 +193,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/login_back" />
+                        android:src="@drawable/rsz_1desert" />
 
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:text="Desserts"
+                        android:text="Deserts"
                         android:textColor="@color/background"
                         android:textSize="24sp" />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/category_nfoods"
+                    android:id="@+id/category_fish_sea_food__menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
@@ -193,12 +219,62 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/login_back" />
+                        android:src="@drawable/seafooddish" />
 
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:text="National Foods"
+                        android:text="Seafood"
+                        android:textColor="@color/background"
+                        android:textSize="24sp" />
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/category_sushi__menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_text">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/rsz_sushi" />
+
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sushi"
+                        android:textColor="@color/background"
+                        android:textSize="24sp" />
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/category_entree__menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_text">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/rsz_entree" />
+
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="Entree"
                         android:textColor="@color/background"
                         android:textSize="24sp" />
                 </android.support.v7.widget.CardView>

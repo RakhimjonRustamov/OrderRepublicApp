@@ -41,7 +41,7 @@ public class FoodDetailActivity extends AppCompatActivity {
 
         //
         Food food = (Food) getIntent().getSerializableExtra("food");
-        food.logger();
+
 
         Glide.with(getApplicationContext())
                 .asBitmap()

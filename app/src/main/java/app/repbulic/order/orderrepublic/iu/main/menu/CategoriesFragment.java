@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,17 +22,25 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
   @BindView(R.id.imageSlider)
   SliderLayout sliderLayout;
   @BindView(R.id.category_pizza__menu)
-  CardView buttonPizza;
-  @BindView(R.id.category_burgers)
-  CardView buttonBurgers;
-  @BindView(R.id.category_coffee)
-  CardView buttonCoffee;
-  @BindView(R.id.category_desserts)
-  CardView buttonDesserts;
-  @BindView(R.id.category_nfoods)
-  CardView buttonNfoods;
-  @BindView(R.id.category_breakfast)
-  CardView buttonBreakfast;
+  CardView categoryPizza;
+  @BindView(R.id.category_burgers__menu)
+  CardView categoryBurgers;
+  @BindView(R.id.category_coffee__menu)
+  CardView categoryCoffee;
+  @BindView(R.id.category_deserts__menu)
+  CardView categoryDeserts;
+  @BindView(R.id.category_national__menu)
+  CardView categoryNationalFood;
+  @BindView(R.id.category_sushi__menu)
+  CardView categorySushi;
+  @BindView(R.id.category_drinks__menu)
+  CardView categoryDrinks;
+  @BindView(R.id.category_entree__menu)
+  CardView categoryEntree;
+  @BindView(R.id.category_fish_sea_food__menu)
+  CardView categorySeafood;
+
+
   private String choosenCategory;
 
   public CategoriesFragment() {
@@ -62,7 +68,7 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.fragment_menu, container, false);
+    View view = inflater.inflate(R.layout.fragment_categories, container, false);
     ButterKnife.bind(this, view);
     setUpListeners();
     return view;
@@ -71,23 +77,29 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
   @Override
   public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.category_breakfast:
-        choosenCategory="breakfast";
+      case R.id.category_national__menu:
+        choosenCategory="national";
         break;
-      case R.id.category_burgers:
+      case R.id.category_burgers__menu:
         choosenCategory="burgers";
         break;
       case R.id.category_pizza__menu:
         choosenCategory="pizza";
         break;
-      case R.id.category_coffee:
+      case R.id.category_coffee__menu:
         choosenCategory="coffee";
         break;
-      case R.id.category_nfoods:
-        choosenCategory="nfoods";
+      case R.id.category_drinks__menu:
+        choosenCategory="drinks";
         break;
-      case R.id.category_desserts:
-        choosenCategory="desert";
+      case R.id.category_sushi__menu:
+        choosenCategory="sushi";
+        break;
+      case R.id.category_fish_sea_food__menu:
+        choosenCategory="fish";
+        break;
+      case R.id.category_entree__menu:
+        choosenCategory="entree";
         break;
     }
     Intent intent = new Intent(getContext(), MenuActivity.class);
@@ -127,12 +139,15 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
   }
 
   private void setUpListeners() {
-    buttonPizza.setOnClickListener(this);
-    buttonBurgers.setOnClickListener(this);
-    buttonCoffee.setOnClickListener(this);
-    buttonDesserts.setOnClickListener(this);
-    buttonNfoods.setOnClickListener(this);
-    buttonBreakfast.setOnClickListener(this);
+    categoryPizza.setOnClickListener(this);
+    categoryBurgers.setOnClickListener(this);
+    categoryCoffee.setOnClickListener(this);
+    categoryDeserts.setOnClickListener(this);
+    categoryNationalFood.setOnClickListener(this);
+    categorySeafood.setOnClickListener(this);
+    categorySushi.setOnClickListener(this);
+    categoryEntree.setOnClickListener(this);
+    categoryDrinks.setOnClickListener(this);
   }
 
 

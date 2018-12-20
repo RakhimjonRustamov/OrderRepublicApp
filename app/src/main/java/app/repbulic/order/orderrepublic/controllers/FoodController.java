@@ -16,10 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import app.repbulic.order.orderrepublic.adapters.FoodAdapter;
-import app.repbulic.order.orderrepublic.iu.main.menu.RecyclerViewAdapter;
+import app.repbulic.order.orderrepublic.adapters.RecyclerViewAdapter;
 import app.repbulic.order.orderrepublic.models.Food;
 
 public class FoodController {
@@ -29,8 +28,7 @@ public class FoodController {
 
     //create food (only users whose isOwner=true are able to call this method)
     public static String createFood(Food food) {
-        //get database reference
-        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food");
+
         //update already existed favoritesList in user
         String id = dbref.push().getKey();
         food.setFoodId(id);
@@ -39,7 +37,7 @@ public class FoodController {
     }
 
     public static void readFoodsByCategory(final String categoryName, final RecyclerView recyclerView, final Context context) {
-//
+
 
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -47,14 +45,44 @@ public class FoodController {
                 ArrayList<Food> foods = new ArrayList<>();
                 for (DataSnapshot foodDataSnapshot : dataSnapshot.getChildren()) {
                     Food food = foodDataSnapshot.getValue(Food.class);
-                    if(food.getCategory().equals(categoryName))
-                       foods.add(food);
+                    if (food.getCategory().equals(categoryName))
+                        foods.add(food);
                 }
-                String TAG = "MenuActivity";
-                Log.d(TAG, "initRecyclerView started");
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(context, foods);
+
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(context, foods, "menu_activity");
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public static void readFoodsByRestaurant(final String restName, final RecyclerView recyclerView, final Context context) {
+
+//        Log.d("food", "inside");
+        dbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Food> foods = new ArrayList<>();
+                for (DataSnapshot foodDataSnapshot : dataSnapshot.getChildren()) {
+                    Food food = foodDataSnapshot.getValue(Food.class);
+                    if (food.getRestaurantName().equals(restName))
+                        foods.add(food);
+                    //food.logger();
+                }
+
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(context, foods, "");
+                recyclerView.setAdapter(adapter);
+
+//                FoodAdapter foodAdapter;
+//                foodAdapter = new FoodAdapter(context, foods);
+//                recyclerView.setAdapter(foodAdapter);
+
             }
 
             @Override

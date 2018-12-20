@@ -17,7 +17,6 @@ import android.widget.Toast;
 import app.repbulic.order.orderrepublic.R;
 import app.repbulic.order.orderrepublic.authentication.LoginActivity;
 import app.repbulic.order.orderrepublic.controllers.UserController;
-import app.repbulic.order.orderrepublic.iu.EditProfileActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

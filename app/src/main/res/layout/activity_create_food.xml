@@ -4,8 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".iu.nav.EditProfileActivity"
+    tools:context=".iu.owner.CreateFood"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Food"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,15 +25,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="First Name:"
+            android:text="Food Name:"
             android:textSize="17dp" />
 
         <EditText
-            android:id="@+id/first_name__edit_profile"
+            android:id="@+id/food_name__create_food"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="first name"
+            android:hint="food name"
             android:textSize="17dp" />
     </LinearLayout>
 
@@ -39,18 +47,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Last Name:"
+            android:text="Price(soum):"
             android:textSize="17dp" />
 
         <EditText
-            android:id="@+id/last_name__edit_profile"
+            android:id="@+id/price__create_food"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="last name"
+            android:hint="7000"
             android:textSize="17dp" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,39 +66,75 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="0.25"
-            android:text="Email:"
+            android:text="Picture Link:"
             android:textSize="17dp" />
 
         <EditText
-            android:id="@+id/email__edit_profile"
+            android:id="@+id/picture_link__create_food"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="email"
+            android:hint="https://alkoshop.ee/937-large_default/rc-cola.jpg"
             android:textSize="17dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
 
-        <Button
-            android:onClick="cancel_button_clicked"
+        <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="cancel changes"
+            android:text="Drinks"
             android:textSize="17dp" />
 
+        <Spinner
+            android:id="@+id/categories_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/categories">
+        </Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Description:"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/description__create_food"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="0.75"
+            android:hint="fish and rice, cold drink, latte coffee ..."
+            android:textSize="17dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
         <Button
-            android:onClick="confirm_button_clicked"
+            android:onClick="submit_button_clicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="submit changes"
+
+            android:text="submit"
             android:textSize="17dp" />
     </LinearLayout>
 

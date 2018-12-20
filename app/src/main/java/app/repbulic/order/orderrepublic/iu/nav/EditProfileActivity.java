@@ -1,4 +1,4 @@
-package app.repbulic.order.orderrepublic.iu;
+package app.repbulic.order.orderrepublic.iu.nav;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

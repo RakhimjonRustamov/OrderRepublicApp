@@ -10,6 +10,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <array name="categories">
+        <item>desert</item>
+        <item>drinks</item>
+        <item>coffee</item>
+        <item>entree</item>
+        <item>fish</item>
+        <item>national</item>
+        <item>burgers</item>
+        <item>sushi</item>
+        <item>pizza</item>
+    </array>
 
 </resources>
 
