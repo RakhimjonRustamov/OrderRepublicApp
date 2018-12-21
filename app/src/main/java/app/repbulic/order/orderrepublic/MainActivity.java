@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import app.repbulic.order.orderrepublic.authentication.LoginActivity;
 import app.repbulic.order.orderrepublic.iu.main.RestaurantsFragment;
 import app.repbulic.order.orderrepublic.iu.main.menu.CategoriesFragment;
 import app.repbulic.order.orderrepublic.iu.main.menu.MenuActivity;
+import app.repbulic.order.orderrepublic.iu.main.orders.CartOrdersActivity;
 import app.repbulic.order.orderrepublic.iu.main.orders.OrdersFragment;
 import app.repbulic.order.orderrepublic.iu.nav.FavoritesFragment;
 import app.repbulic.order.orderrepublic.iu.nav.ProfileFragment;
@@ -63,6 +65,19 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             bottomNavigation.setSelectedItemId(R.id.action_menu); // change to whichever id should be default
         }
+        String fileName ="Rayhon{https://stackoverflow.com";
+        int iend =fileName.indexOf("{");
+        int length = fileName.length();
+        String subString="";
+        String link = "";
+        if (iend != -1)
+        {
+            subString= fileName.substring(0 , iend); //this will give abc
+            link = fileName.substring(iend+1,length);
+
+        }
+        Log.d("num", "Message test"+subString +" "+ link);
+
     }
 
     private void setUpApp() {
@@ -154,7 +169,7 @@ public class MainActivity extends AppCompatActivity
         switch (v.getId())
         {
             case R.id.cart__main:
-
+            startActivity(new Intent(this, CartOrdersActivity.class));
             break;
         }
     }
