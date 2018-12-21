@@ -81,13 +81,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1">
+
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:layout_weight="0.4"
                         android:paddingLeft="8dp"
                         android:paddingTop="8dp"
                         android:text="Price"
@@ -96,9 +96,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/price__owner_side"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.4"
+                        android:paddingLeft="8dp"
                         android:paddingTop="8dp"
                         android:text="$10.0"
                         android:textColor="@color/colorPrimaryText"
@@ -116,16 +117,17 @@
                         android:layout_marginTop="4dp"
                         android:paddingLeft="8dp"
                         android:paddingTop="8dp"
-                        android:text="Address"
+                        android:text="Category"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/category__food_detail_owner_side"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:paddingLeft="4dp"
+                        android:padding="8dp"
+                        android:paddingLeft="8dp"
                         android:text="Metro Buyuk Ipak Yo'li, Sayohat Mehmonxonasi Bekati"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp" />
@@ -142,81 +144,56 @@
                         android:layout_marginTop="4dp"
                         android:paddingLeft="8dp"
                         android:paddingTop="8dp"
-                        android:text="Landmarks"
+                        android:text="Rating"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/rating_info__food_detail_owner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:paddingLeft="4dp"
-                        android:text="Sayohat Mehmonxonasi"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:paddingLeft="8dp"
-                        android:paddingTop="8dp"
-                        android:text="Service Charge"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:paddingLeft="4dp"
-                        android:text="0%"
+                        android:text="4.9"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center">
 
-                    <TextView
-                        android:id="@+id/elegant_text__food_detail_owner_side"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="16sp"
+                    <Button
+                        android:onClick="edit_food__owner_side"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@color/appColor"
+                        android:elevation="6dp"
+                        android:text="edit food"
+                        android:textAlignment="center"
+                        android:textColor="@color/background"
                         android:textStyle="bold" />
 
-                    <!--<com.cepheuen.elegantnumberbutton.view.ElegantNumberButton-->
-                        <!--android:id="@+id/elegant_button__food_detail_owner_side"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="35dp"-->
-                        <!--android:gravity="center"-->
-                        <!--app:backGroundColor="@color/colorAccent"-->
-                        <!--app:finalNumber="100"></com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>-->
+                    <android.support.v4.widget.Space
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:onClick="delete__owner_side"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@color/appColor"
+                        android:elevation="6dp"
+                        android:text="delete food"
+                        android:textAlignment="center"
+                        android:textColor="@color/background"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/ic_shipped"
-        app:elevation="6dp"
-        app:layout_anchor="@+id/deatail_cardview__owner_side"
-        app:layout_anchorGravity="bottom|center|end"
-        app:pressedTranslationZ="12dp" />
 </android.support.design.widget.CoordinatorLayout>

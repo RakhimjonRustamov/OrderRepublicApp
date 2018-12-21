@@ -66,14 +66,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Intent intent = new Intent(rcontext, OwnerSideFoodDetail.class);
                     intent.putExtra("food", foodList.get(position));
                     rcontext.startActivity(intent);
-                    Toast.makeText(rcontext, "Food Name: " + foodList.get(position).getFoodName(), Toast.LENGTH_LONG).show();
-
-                } else {
+                } else if(activity.equals("menu_activity")){
                     Intent intent = new Intent(rcontext, FoodDetailActivity.class);
                     intent.putExtra("food", foodList.get(position));
                     rcontext.startActivity(intent);
-                    Toast.makeText(rcontext, "Food Name: " + foodList.get(position).getFoodName(), Toast.LENGTH_LONG).show();
                 }
+
 
             }
         });

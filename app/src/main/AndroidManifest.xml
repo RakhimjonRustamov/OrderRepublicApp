@@ -62,7 +62,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".iu.owner.OwnerSideFoodDetail" />
-        <activity android:name=".iu.owner.CreateFood"></activity>
+        <activity android:name=".iu.owner.CreateFood" />
+        <activity
+            android:name=".iu.owner.EditFood"
+            android:parentActivityName=".iu.owner.OwnerSideFoodDetail" />
+        <activity android:name=".iu.owner.ViewDoneOrders"></activity>
     </application>
 
 </manifest>

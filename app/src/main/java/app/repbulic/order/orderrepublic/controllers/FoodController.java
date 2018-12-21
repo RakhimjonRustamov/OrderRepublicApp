@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -99,19 +101,23 @@ public class FoodController {
     public static void readFoods(final ListView favlistView, final Context context, final ArrayList<String> foodIds) {
 
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+            int i = 0, j = foodIds.size();
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int i = 0;
+
                 ArrayList<Food> foods = new ArrayList<>();
                 FoodAdapter foodAdapter;
                 for (DataSnapshot foodDataSnapshot : dataSnapshot.getChildren()) {
                     Food food = foodDataSnapshot.getValue(Food.class);
-                    if (food.getFoodId().equals(foodIds.get(i))) {
-                        foods.add(food);
+                    //Log.d("food", foodIds.get());
+                    food.logger();
+                    if (i < j) {
+                        if (food.getFoodId().equals(foodIds.get(i))) {
+                            foods.add(food);
+                            i++;
+                        }
                     }
-                    i++;
-                    //food.logger();
-                    //Log.d("foods", food.toString());
                 }
                 foodAdapter = new FoodAdapter(context, foods);
                 favlistView.setAdapter(foodAdapter);
@@ -125,7 +131,7 @@ public class FoodController {
         });
     }
 
-    public static void readFood(String foodId) {
+    public static void readFood(String foodId, final ArrayList<View> widgets) {
         //get database reference
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food").child(foodId);
         //add eventlistener to reference
@@ -133,6 +139,10 @@ public class FoodController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Food food = dataSnapshot.getValue(Food.class);
+                ((EditText) (widgets.get(0))).setText(food.getFoodDesctiption());
+                ((EditText) (widgets.get(1))).setText(food.getPictureLink());
+                ((EditText) (widgets.get(2))).setText(food.getPrice());
+                ((EditText) (widgets.get(3))).setText(food.getFoodName());
                 //food.logger();
             }
 
@@ -147,15 +157,16 @@ public class FoodController {
     //update food
     //food can be updated only by owner users
 
-    public static void updateFood(final Food updatedFood) {
-        //get database reference
-        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food").child(updatedFood.getFoodId());
-        //add eventlistener to reference
-        dbref.addValueEventListener(new ValueEventListener() {
+    public static void updateFood(final ArrayList<String> values) {
+        final DatabaseReference newref = dbref.child(values.get(0));
+        newref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                dbref.setValue(updatedFood);
+                newref.child("category").setValue(values.get(1));
+                newref.child("foodDesctiption").setValue(values.get(2));
+                newref.child("pictureLink").setValue(values.get(3));
+                newref.child("price").setValue(values.get(4));
+                newref.child("foodName").setValue(values.get(5));
 
             }
 
@@ -167,16 +178,12 @@ public class FoodController {
     }
 
     //delete food
-    public static void deleteFood(String foodId) {
-        //get database reference
-        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("food").child(foodId);
-        //add eventlistener to reference
-        dbref.addValueEventListener(new ValueEventListener() {
+    public static void deleteFood(final String foodId) {
+
+        dbref.child(foodId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-                dbref.setValue(null);
+                dbref.child(foodId).setValue(null);
             }
 
             @Override

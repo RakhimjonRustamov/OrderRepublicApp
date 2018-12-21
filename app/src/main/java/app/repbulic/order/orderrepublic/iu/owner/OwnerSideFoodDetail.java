@@ -1,5 +1,6 @@
 package app.repbulic.order.orderrepublic.iu.owner;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,23 +9,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 
 import app.repbulic.order.orderrepublic.R;
+import app.repbulic.order.orderrepublic.controllers.FoodController;
 import app.repbulic.order.orderrepublic.models.Food;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class OwnerSideFoodDetail extends AppCompatActivity {
-    @BindView(R.id.elegant_text__food_detail_owner_side)
-    TextView elegantTextView;
+
     @BindView(R.id.toolbar__food_detail_owner_side)
     Toolbar toolbar;
     @BindView(R.id.food_image__food_detail_owner_side)
     ImageView foodImage;
     @BindView(R.id.desctiption__food_detail_owner_side)
     TextView description;
+    @BindView(R.id.price__owner_side)
+    TextView price;
+    @BindView(R.id.category__food_detail_owner_side)
+    TextView category;
 
+    private String foodId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,29 +37,28 @@ public class OwnerSideFoodDetail extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Food food = (Food) getIntent().getSerializableExtra("food");
-//        food.logger();
+        foodId = food.getFoodId();
         Glide.with(getApplicationContext())
                 .asBitmap()
                 .load(food.getPictureLink())
                 .into(foodImage);
         description.setText(food.getFoodDesctiption());
+        toolbar.setTitle(food.getFoodName());
+        price.setText(food.getPrice());
+        category.setText(food.getCategory());
 
 
-        //
-        //toolbar = findViewById(R.id.toolbar);
+    }
 
-//        setSupportActionBar(toolbar);
-//        if (getSupportActionBar() != null) {
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        }
+    public void delete__owner_side(View view) {
+        FoodController.deleteFood(foodId);
+        finish();
+    }
 
-//        elegantNumberButton = (ElegantNumberButton) findViewById(R.id.elegant_button__food_detail);
-//        elegantNumberButton.setOnClickListener(new ElegantNumberButton.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                number = elegantNumberButton.getNumber();
-//            }
-//        });
+    public void edit_food__owner_side(View view) {
+        Intent editFood=new Intent(this, EditFood.class);
+        editFood.putExtra("foodId", foodId);
+        startActivity(editFood);
 
     }
 }

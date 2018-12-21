@@ -11,8 +11,6 @@ public class Order {
     private String address;
     private String status;
     private String specialGuidelines;
-    private Long receivedTime;
-    private Long doneTime;
     private ArrayList<Food> foods;
     private ArrayList<Integer> quantities;
     private String totalPrice;
@@ -22,15 +20,13 @@ public class Order {
     }
 
 
-    public Order(String orderId, String orderTitle, String userEmail, String address, String status, String specialGuidelines, Long receivedTime, Long doneTime, ArrayList<Food> foods, ArrayList<Integer> quantities, String userId) {
+    public Order(String orderId, String orderTitle, String userEmail, String address, String status, String specialGuidelines, ArrayList<Food> foods, ArrayList<Integer> quantities, String userId) {
         this.orderId = orderId;
         this.orderTitle = orderTitle;
         this.userEmail = userEmail;
         this.address = address;
         this.status = status;
         this.specialGuidelines = specialGuidelines;
-        this.receivedTime = receivedTime;
-        this.doneTime = doneTime;
         this.foods = foods;
         this.quantities = quantities;
         this.userId = userId;
@@ -93,21 +89,6 @@ public class Order {
         this.status = status;
     }
 
-    public Long getReceivedTime() {
-        return receivedTime;
-    }
-
-    public void setReceivedTime(Long receivedTime) {
-        this.receivedTime = receivedTime;
-    }
-
-    public Long getDoneTime() {
-        return doneTime;
-    }
-
-    public void setDoneTime(Long doneTime) {
-        this.doneTime = doneTime;
-    }
 
     public ArrayList<Food> getFoods() {
         return foods;
@@ -138,20 +119,17 @@ public class Order {
         ArrayList<Integer> quan = new ArrayList<>();
         quan.add(2);
         quan.add(1);
-        Long a = Long.valueOf(12312), b = Long.valueOf(232143432);
         Order order = new Order(" ",
                 "to Rahim",
                 "mail@mail.ru",
                 "Ziyolilar 9, M. Ulugbek, Tashkent",
                 "received",
                 "knock the door",
-                a,
-                b,
                 Food.getDefaults(),
                 quan,
                 "-LTq1uzUTmvBLkR1H-Cq");
         orders.add(order);
-        //order.setOrderId(" ");
+
 
         return orders;
     }
