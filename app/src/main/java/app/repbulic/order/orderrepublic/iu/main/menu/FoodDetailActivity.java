@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
 
     private Food food;
     private boolean added = false;
+    private boolean liked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +84,17 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.favButton__food_detail:
-                favoriteButton.setImageResource(R.drawable.ic_favorite);
-                FavoritesController.updateFavorite(MainActivity.userId, food.getFoodId(), true);
-                Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
+                if (!liked) {
+                    liked = true;
+//                    favoriteButton.setImageResource(R.drawable.ic_favorite);
+                    FavoritesController.updateFavorite(MainActivity.userId, food.getFoodId(), true, favoriteButton);
+                    Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
+                } else {
+                    liked = false;
+//                    favoriteButton.setImageResource(R.drawable.ic_favorite_empty);
+                    FavoritesController.updateFavorite(MainActivity.userId, food.getFoodId(), false, favoriteButton);
+                    Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.addTocart__food_detail:
                 if (!added) {
@@ -106,7 +116,7 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
                             foods.get(0).getRestaurantLogoLink(),
                             foods.get(0).getRestaurantName()
                     );
-                    OrderController.createOrder(order);
+                    OrderController.updateOrder(order);
                     Toast.makeText(this, "Added to cart", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(this, "You already added this item to cart", Toast.LENGTH_SHORT).show();

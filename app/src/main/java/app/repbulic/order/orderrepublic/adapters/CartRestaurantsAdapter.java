@@ -17,6 +17,7 @@ import java.util.List;
 
 import app.repbulic.order.orderrepublic.R;
 import app.repbulic.order.orderrepublic.iu.main.orders.CartSingleRestaurantOrder;
+import app.repbulic.order.orderrepublic.models.Order;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,11 +28,13 @@ public class CartRestaurantsAdapter extends RecyclerView.Adapter<CartRestaurants
     private ArrayList<String> restPicLinks;
     private String restaurantName;
     private String restLogoLink;
+    private ArrayList<Order> orders;
 
-    public CartRestaurantsAdapter(Context context, ArrayList<String> restaurantNameList, ArrayList<String> restPicLinks) {
+    public CartRestaurantsAdapter(Context context, ArrayList<String> restaurantNameList, ArrayList<String> restPicLinks, ArrayList<Order> orders) {
         this.restaurantNameList = restaurantNameList;
         this.restPicLinks = restPicLinks;
         this.rcontext = context;
+        this.orders = orders;
     }
 
 
@@ -44,6 +47,7 @@ public class CartRestaurantsAdapter extends RecyclerView.Adapter<CartRestaurants
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.cartResCardview.setTag(position);
         restaurantName = restaurantNameList.get(position);
         restLogoLink = restPicLinks.get(position);
         Glide.with(rcontext)
@@ -54,8 +58,10 @@ public class CartRestaurantsAdapter extends RecyclerView.Adapter<CartRestaurants
         holder.cartResCardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int position = (int) v.getTag();
+                Log.d("pois", position+"");
                 Intent intent = new Intent(rcontext, CartSingleRestaurantOrder.class);
+                intent.putExtra("order", orders.get(position));
                 rcontext.startActivity(intent);
             }
         });

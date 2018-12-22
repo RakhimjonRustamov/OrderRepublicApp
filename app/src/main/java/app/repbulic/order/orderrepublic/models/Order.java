@@ -2,9 +2,10 @@ package app.repbulic.order.orderrepublic.models;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Order {
+public class Order implements Serializable{
     private String orderId;
     private String orderTitle;
     private String userEmail;

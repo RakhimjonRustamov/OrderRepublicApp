@@ -69,14 +69,13 @@ public class FoodAdapter extends ArrayAdapter {
         holder.descriptionTextView = convertView.findViewById(R.id.food_description_fav);
         holder.image = convertView.findViewById(R.id.food_image_fav);
         holder.addToCart = convertView.findViewById(R.id.btn_add_to_cart__fav);
-        holder.foodPosition = convertView.findViewById(R.id.foodId__fav);
+
         Glide.with(context)
                 .asBitmap()
                 .load(foods.get(position).getPictureLink())
                 .into(holder.image);
 
 
-        Log.d("sdasda", "heer");
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +113,7 @@ public class FoodAdapter extends ArrayAdapter {
             }
         });
 
-        holder.setData(food.getFoodName(), food.getPrice(), food.getRestaurantName(), food.getFoodDesctiption(), position);
+        holder.setData(food.getFoodName(), food.getPrice(), food.getRestaurantName(), food.getFoodDesctiption());
 
         return convertView;
     }
@@ -126,14 +125,11 @@ public class FoodAdapter extends ArrayAdapter {
         TextView descriptionTextView;
         CircleImageView image;
         TextView addToCart;
-        TextView foodPosition;
-
-        void setData(String name, String price, String res, String desc, int pos) {
+        void setData(String name, String price, String res, String desc) {
             nameTextView.setText(name);
             priceTextView.setText(price);
             restaurantTextView.setText(res);
             descriptionTextView.setText(desc);
-            foodPosition.setText(pos+"");
 
         }
     }

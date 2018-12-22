@@ -28,14 +28,6 @@ public class CartOrdersActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_cart_orders);
     recyclerViewCartRes = findViewById(R.id.cart_restaurants_rv);
-
-//    ArrayList<String> a, b;
-//    a = new ArrayList<>();
-//    b= new ArrayList<>();
-//    CartRestaurantsAdapter adapter = new CartRestaurantsAdapter(this, a, b);//= new CartRestaurantsAdapter(context, restNames, restPics);
-//    recyclerViewCartRes.setAdapter(adapter);
-//    recyclerViewCartRes.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
-
     OrderController.readOrderRestaurants(MainActivity.userId, recyclerViewCartRes, getApplicationContext());
   }
 
