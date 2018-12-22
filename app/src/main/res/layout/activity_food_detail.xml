@@ -157,20 +157,6 @@
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp" />
                 </LinearLayout>
-<!--
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-                        android:id="@+id/elegant_button__food_detail"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:gravity="center"
-                        app:backGroundColor="@color/colorAccent"
-                        app:finalNumber="100"></com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
-
-                </LinearLayout>-->
                         <Button
                           android:id="@+id/addTocart__food_detail"
                           android:layout_width="match_parent"

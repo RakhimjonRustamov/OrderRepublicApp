@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fe104d</color>
-    <color name="colorPrimaryDark">#c21531</color>
-    <color name="colorAccent">#ff2a63</color>
-    <color name="textPlainColor">#686868</color>
-    <color name="background">#f6f9f8</color>
-    <color name="darkGreen">#035017</color>
-    <color name="appColor">#23283a</color>
-    <color name="appColorSecond">#fe104d</color>
+  <color name="colorPrimary">#fe104d</color>
+  <color name="colorPrimaryDark">#c21531</color>
+  <color name="colorAccent">#ff2a63</color>
+  <color name="textPlainColor">#686868</color>
+  <color name="background">#f6f9f8</color>
+  <color name="darkGreen">#035017</color>
+  <color name="appColor">#23283a</color>
+  <color name="appColorSecond">#fe104d</color>
   <color name="colorPrimaryText">#050505</color>
-    <color name="btnColor">#19fd09</color>
-
+  <color name="btnColor">#ff0000</color>
+  <color name="btnPrice">#ffc20f</color>
 </resources>
