@@ -151,7 +151,6 @@ public class Order {
                 Food.getDefaults().get(0).getRestaurantName());
         orders.add(order);
 
-
         return orders;
     }
 

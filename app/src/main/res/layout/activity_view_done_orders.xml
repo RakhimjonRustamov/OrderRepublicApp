@@ -16,8 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-            app:title="Done order details"/>
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Done order details"
+            app:titleTextColor="#ffffff"/>
 
         <LinearLayout
             android:layout_width="match_parent"
