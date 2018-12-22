@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.cart__main)
     ImageView clickableCartIcon;
 
-    private String userId = "-LTq1uzUTmvBLkR1H-Cq";
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    public static String userEmail= "mail@mail.ru";
+    public static String userId = "-LTq1uzUTmvBLkR1H-Cq";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,18 +67,17 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             bottomNavigation.setSelectedItemId(R.id.action_menu); // change to whichever id should be default
         }
-        String fileName ="Rayhon{https://stackoverflow.com";
-        int iend =fileName.indexOf("{");
+        String fileName = "Rayhon{https://stackoverflow.com";
+        int iend = fileName.indexOf("{");
         int length = fileName.length();
-        String subString="";
+        String subString = "";
         String link = "";
-        if (iend != -1)
-        {
-            subString= fileName.substring(0 , iend); //this will give abc
-            link = fileName.substring(iend+1,length);
+        if (iend != -1) {
+            subString = fileName.substring(0, iend); //this will give abc
+            link = fileName.substring(iend + 1, length);
 
         }
-        Log.d("num", "Message test"+subString +" "+ link);
+        Log.d("num", "Message test" + subString + " " + link);
 
     }
 
@@ -147,10 +148,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             fragment = new ProfileFragment();
             fragment.setArguments(data);
-        } else if (id == R.id.nav_orders) {
-            fragment = OrdersFragment.newInstance();
-        } else if (id == R.id.nav_about) {
-            startActivity(new Intent(MainActivity.this, MenuActivity.class));
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -166,11 +163,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.cart__main:
-            startActivity(new Intent(this, CartOrdersActivity.class));
-            break;
+                Intent intent = new Intent(this, CartOrdersActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

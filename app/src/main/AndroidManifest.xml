@@ -22,12 +22,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".authentication.RegisterActivity"
@@ -43,9 +43,6 @@
             android:name=".iu.main.menu.MenuActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".iu.nav.AboutActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".iu.nav.EditProfileActivity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
@@ -55,14 +52,15 @@
         <activity
             android:name=".iu.owner.OwnerActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".iu.owner.OwnerSideFoodDetail" />
         <activity android:name=".iu.owner.CreateFood"></activity>
+        <activity android:name=".iu.main.orders.CartOrdersActivity"></activity>
     </application>
 
 </manifest>

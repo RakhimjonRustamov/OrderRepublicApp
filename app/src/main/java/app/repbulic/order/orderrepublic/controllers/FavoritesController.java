@@ -19,14 +19,6 @@ import app.repbulic.order.orderrepublic.models.Food;
 
 public class FavoritesController {
 
-    //create
-    public static void createFavorite(String userId, ArrayList<String> favList) {
-        //get database reference
-        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("users");
-        //update already existed favoritesList in user
-        dbref.child(userId).child("favoritesList").setValue(favList);
-
-    }
 
 
 
@@ -45,10 +37,9 @@ public class FavoritesController {
 
                 for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
                     String fav = favDataSnapshot.getValue(String.class);
-                    Log.d("favor", fav);
                     favs.add(fav);
                 }
-                FoodController.readFoods(favoritesList, context,favs);
+                FoodController.readFavoriteFoods(favoritesList, context, favs);
 
 
             }
@@ -63,21 +54,35 @@ public class FavoritesController {
 
     //update = delete when nothing is left in list
 
-    public static void deleteFavorite(String userId, final String foodId) {
+    //when option is false, item in favorites will be deleted, otherwise added
+
+    public static void updateFavorite(String userId, final String foodId, final boolean option) {
         //get database reference
         final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("users").child(userId);
         //add eventlistener to reference
-        dbref.child("favoritesList").addValueEventListener(new ValueEventListener() {
+        dbref.child("favoritesList").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> updated = new ArrayList<>();
+                boolean exists = false;
                 for (DataSnapshot favDataSnapshot : dataSnapshot.getChildren()) {
                     String fav = favDataSnapshot.getValue(String.class);
                     Log.d("favor", fav);
-
-                    if (foodId.equals(fav)) {
-                        Log.d("favor", "this one should be deleted ");
-                    } else updated.add(fav);
+                    if (!option) {
+                        if (foodId.equals(fav))
+                            Log.d("favor", "this one should be deleted ");
+                        else
+                            updated.add(fav);
+                    } else {
+                        if (foodId.equals(fav)) {
+                            exists = true;
+                            updated.add(fav);
+                        } else
+                            updated.add(fav);
+                    }
+                }
+                if (!exists) {
+                    updated.add(foodId);
                 }
                 dbref.child("favoritesList").setValue(updated);
 

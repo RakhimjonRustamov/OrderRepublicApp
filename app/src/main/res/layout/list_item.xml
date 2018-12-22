@@ -10,7 +10,7 @@
   <android.support.v7.widget.CardView
     android:id="@+id/food_cardview"
     android:layout_width="0dp"
-    android:layout_height="192dp"
+    android:layout_height="182dp"
     android:layout_marginBottom="20dp"
     android:layout_marginTop="4dp"
     app:cardBackgroundColor="@color/background"
@@ -80,20 +80,6 @@
 
     </android.support.constraint.ConstraintLayout>
   </android.support.v7.widget.CardView>
-  <Button
-    android:id="@+id/btn_order"
-    android:layout_width="150dp"
-    android:layout_height="50dp"
-    android:gravity="center"
-    android:text="Order"
-    android:background="@drawable/btn_ok_white"
-    android:elevation="4dp"
-    android:textAlignment="center"
-    android:paddingBottom="5dp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="@+id/food_cardview"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/food_cardview"
-    app:layout_constraintVertical_bias="0.0" />
+
+
 </android.support.constraint.ConstraintLayout>

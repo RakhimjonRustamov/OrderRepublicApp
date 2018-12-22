@@ -65,17 +65,18 @@ public class FoodController {
     }
 
     public static void readFoodsByRestaurant(final String restName, final RecyclerView recyclerView, final Context context) {
-
-//        Log.d("food", "inside");
+        Log.d("food", "inside" + restName);
         dbref.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 ArrayList<Food> foods = new ArrayList<>();
                 for (DataSnapshot foodDataSnapshot : dataSnapshot.getChildren()) {
                     Food food = foodDataSnapshot.getValue(Food.class);
                     if (food.getRestaurantName().equals(restName))
                         foods.add(food);
-                    //food.logger();
+                    food.logger();
                 }
 
                 RecyclerViewAdapter adapter = new RecyclerViewAdapter(context, foods, "");
@@ -98,7 +99,7 @@ public class FoodController {
 
     //TODO:update ui when data received
     //read foods or food when foodId is passed
-    public static void readFoods(final ListView favlistView, final Context context, final ArrayList<String> foodIds) {
+    public static void readFavoriteFoods(final ListView favlistView, final Context context, final ArrayList<String> foodIds) {
 
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
             int i = 0, j = foodIds.size();
@@ -110,16 +111,18 @@ public class FoodController {
                 FoodAdapter foodAdapter;
                 for (DataSnapshot foodDataSnapshot : dataSnapshot.getChildren()) {
                     Food food = foodDataSnapshot.getValue(Food.class);
-                    //Log.d("food", foodIds.get());
-                    food.logger();
+
                     if (i < j) {
-                        if (food.getFoodId().equals(foodIds.get(i))) {
-                            foods.add(food);
-                            i++;
+                        for (int k = 0; k < j; k++) {
+                            if (food.getFoodId().equals(foodIds.get(k))) {
+                                foods.add(food);
+                                i++;
+                            }
                         }
                     }
                 }
-                foodAdapter = new FoodAdapter(context, foods);
+                Log.d("t", foods.toString());
+                foodAdapter = new FoodAdapter(context, foods, favlistView);
                 favlistView.setAdapter(foodAdapter);
 
             }

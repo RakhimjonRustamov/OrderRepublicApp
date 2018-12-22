@@ -15,12 +15,14 @@ public class Order {
     private ArrayList<Integer> quantities;
     private String totalPrice;
     private String userId;
+    private String restauranPicLink;
+    private String restaurantName;
 
     public Order() {
     }
 
 
-    public Order(String orderId, String orderTitle, String userEmail, String address, String status, String specialGuidelines, ArrayList<Food> foods, ArrayList<Integer> quantities, String userId) {
+    public Order(String orderId, String orderTitle, String userEmail, String address, String status, String specialGuidelines, ArrayList<Food> foods, ArrayList<Integer> quantities, String userId, String restauranPicLink, String restaurantName) {
         this.orderId = orderId;
         this.orderTitle = orderTitle;
         this.userEmail = userEmail;
@@ -30,23 +32,25 @@ public class Order {
         this.foods = foods;
         this.quantities = quantities;
         this.userId = userId;
+        this.restauranPicLink = restauranPicLink;
+        this.restaurantName= restaurantName;
         this.totalPrice = calculateTotal();
     }
 
-    public String getUserId() {
-        return userId;
+    public String getRestauranPicLink() {
+        return restauranPicLink;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setRestauranPicLink(String restauranPicLink) {
+        this.restauranPicLink = restauranPicLink;
     }
 
-    public String getTotalPrice() {
-        return totalPrice;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setTotalPrice(String totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     public String getOrderId() {
@@ -89,6 +93,13 @@ public class Order {
         this.status = status;
     }
 
+    public String getSpecialGuidelines() {
+        return specialGuidelines;
+    }
+
+    public void setSpecialGuidelines(String specialGuidelines) {
+        this.specialGuidelines = specialGuidelines;
+    }
 
     public ArrayList<Food> getFoods() {
         return foods;
@@ -106,12 +117,20 @@ public class Order {
         this.quantities = quantities;
     }
 
-    public String getSpecialGuidelines() {
-        return specialGuidelines;
+    public String getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setSpecialGuidelines(String specialGuidelines) {
-        this.specialGuidelines = specialGuidelines;
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public static ArrayList<Order> getDefaults() {
@@ -127,7 +146,9 @@ public class Order {
                 "knock the door",
                 Food.getDefaults(),
                 quan,
-                "-LTq1uzUTmvBLkR1H-Cq");
+                "-LTq1uzUTmvBLkR1H-Cq",
+                Food.getDefaults().get(0).getRestaurantLogoLink(),
+                Food.getDefaults().get(0).getRestaurantName());
         orders.add(order);
 
 
