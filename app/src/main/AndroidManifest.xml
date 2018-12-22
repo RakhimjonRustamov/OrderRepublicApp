@@ -1,72 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  package="app.repbulic.order.orderrepublic"
-  tools:node="replace">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="app.repbulic.order.orderrepublic"
+    tools:node="replace">
 
-  <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity
-      android:name=".authentication.LoginActivity"
-      android:label="@string/app_name"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".MainActivity"
-      android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".authentication.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity
-      android:name=".authentication.RegisterActivity"
-      android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-    <meta-data
-      android:name="android.support.VERSION"
-      android:value="26.1.0"
-      tools:node="replace" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
 
-    <activity
-      android:name=".iu.main.menu.MenuActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".iu.nav.AboutActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".iu.nav.EditProfileActivity"
-      android:parentActivityName=".MainActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".iu.main.menu.FoodDetailActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".iu.owner.OwnerActivity"
-      android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".authentication.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-      <!--
-                      <intent-filter>
-                      <action android:name="android.intent.action.MAIN" />
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.1.0"
+            tools:node="replace" />
 
-                      <category android:name="android.intent.category.LAUNCHER" />
-                  </intent-filter>
-            -->
-    </activity>
-    <activity android:name=".iu.owner.OwnerSideFoodDetail" />
-    <activity android:name=".iu.owner.CreateFood" />
-    <activity android:name=".iu.main.orders.CartSingleRestaurantOrder" />
-    <activity android:name=".iu.main.orders.CartOrdersActivity" />
-    <activity android:name=".iu.main.orders.FinishOrderActivity"></activity>
-  </application>
+        <activity
+            android:name=".iu.main.menu.MenuActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".iu.nav.EditProfileActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.main.menu.FoodDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.owner.OwnerActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".iu.owner.OwnerSideFoodDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.owner.EditFood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.owner.CreateFood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.main.orders.CartSingleRestaurantOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".iu.main.orders.CartOrdersActivity"
+            android:screenOrientation="portrait" />
+    </application>
 
 </manifest>

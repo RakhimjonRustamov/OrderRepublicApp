@@ -59,7 +59,6 @@ public class CartRestaurantsAdapter extends RecyclerView.Adapter<CartRestaurants
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag();
-                Log.d("pois", position+"");
                 Intent intent = new Intent(rcontext, CartSingleRestaurantOrder.class);
                 intent.putExtra("order", orders.get(position));
                 rcontext.startActivity(intent);

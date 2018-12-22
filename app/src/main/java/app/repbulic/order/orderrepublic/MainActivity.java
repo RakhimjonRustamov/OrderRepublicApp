@@ -28,6 +28,7 @@ import app.repbulic.order.orderrepublic.iu.main.orders.CartOrdersActivity;
 import app.repbulic.order.orderrepublic.iu.main.orders.OrdersFragment;
 import app.repbulic.order.orderrepublic.iu.nav.FavoritesFragment;
 import app.repbulic.order.orderrepublic.iu.nav.ProfileFragment;
+import app.repbulic.order.orderrepublic.models.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
     private FragmentManager fragmentManager;
     private Fragment fragment;
-    public static String userEmail= "mail@mail.ru";
+    public static String userEmail = "mail@mail.ru";
     public static String userId = "-LTq1uzUTmvBLkR1H-Cq";
 
     @Override
@@ -57,6 +58,12 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
+        User u = (User) getIntent().getSerializableExtra("user");
+
+        if(u!=null) {
+            userId = u.getUserId();
+            userEmail = u.getEmail();
+        }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -67,17 +74,6 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             bottomNavigation.setSelectedItemId(R.id.action_menu); // change to whichever id should be default
         }
-        String fileName = "Rayhon{https://stackoverflow.com";
-        int iend = fileName.indexOf("{");
-        int length = fileName.length();
-        String subString = "";
-        String link = "";
-        if (iend != -1) {
-            subString = fileName.substring(0, iend); //this will give abc
-            link = fileName.substring(iend + 1, length);
-
-        }
-        Log.d("num", "Message test" + subString + " " + link);
 
     }
 

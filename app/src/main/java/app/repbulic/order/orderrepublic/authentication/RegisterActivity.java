@@ -41,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
   @BindView(R.id.progress_bar)
   ProgressBar progressBar;
   private FirebaseAuth firebaseAuth;
-  private FirebaseUser firebaseUser;
   private FirebaseDatabase firebaseDatabase;
 
   @Override
@@ -86,9 +85,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         public void onComplete(@NonNull Task<AuthResult> task) {
           if (task.isSuccessful()) {
             progressBar.setVisibility(View.GONE);
-            insertUser(task.getResult().getUser());
+
+            User user = insertUser(task.getResult().getUser());
             Toast.makeText(getApplicationContext(), "User Register Successfull", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+            intent.putExtra("user",user);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
 
@@ -119,18 +120,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
   }
 
-  private void insertUser(FirebaseUser firebaseUser) {
-    String firstName = "firstname";
-    String lastName = "lastname";
+  private User insertUser(FirebaseUser firebaseUser) {
+    String firstName = "John";
+    String lastName = "Doe";
     boolean isOwner = false;
     String email = firebaseUser.getEmail();
     String userId = firebaseUser.getUid();
     ArrayList<String> favlist = new ArrayList<String>();
     favlist.add("");
+
     User user = new User(userId, firstName, lastName, isOwner, email, favlist);
     firebaseDatabase = FirebaseDatabase.getInstance();
     Toast.makeText(this, "INSERT USER FUNCTION", Toast.LENGTH_LONG).show();
     DatabaseReference userReference = firebaseDatabase.getReference();
     userReference.child("users").child(userId).setValue(user);
+    return user;
   }
 }

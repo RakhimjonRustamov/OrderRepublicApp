@@ -33,7 +33,7 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
     @BindView(R.id.desctiption__food_detail)
     TextView description;
     @BindView(R.id.price__food_detail)
-    TextView       priceFood;
+    TextView priceFood;
     @BindView(R.id.restaurantName__food_detail)
     TextView restaurantName;
     @BindView(R.id.rating_info__food_detail)
@@ -54,11 +54,12 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
         ButterKnife.bind(this);
         // getting single item data
         food = (Food) getIntent().getSerializableExtra("food");
-        food.logger();
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         setSupportActionBar(toolbar);
+        toolbar.setTitle(food.getFoodName());
         setFoodDetails();
         favoriteButton.setOnClickListener(this); // to add food to favorite list
         addToCartButton.setOnClickListener(this); // to add food to order cart
@@ -84,12 +85,10 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.favButton__food_detail:
                 if (!liked) {
                     liked = true;
-//                    favoriteButton.setImageResource(R.drawable.ic_favorite);
                     FavoritesController.updateFavorite(MainActivity.userId, food.getFoodId(), true, favoriteButton);
                     Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
                 } else {
                     liked = false;
-//                    favoriteButton.setImageResource(R.drawable.ic_favorite_empty);
                     FavoritesController.updateFavorite(MainActivity.userId, food.getFoodId(), false, favoriteButton);
                     Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
                 }

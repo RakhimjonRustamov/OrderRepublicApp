@@ -13,6 +13,7 @@ import app.repbulic.order.orderrepublic.R;
 import app.repbulic.order.orderrepublic.iu.owner.owner_fragments.DoneOrdersFragment;
 import app.repbulic.order.orderrepublic.iu.owner.owner_fragments.OwnerMenuFragment;
 import app.repbulic.order.orderrepublic.iu.owner.owner_fragments.PendingOrdersFragment;
+import app.repbulic.order.orderrepublic.models.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,17 +25,24 @@ public class OwnerActivity extends AppCompatActivity  {
     Toolbar toolbar;
 
     private String userId ="-LTq1uzUTmvBLkR1H-Cq";
-    private String restName ="Chopar";
+    private String restName ="Rahimz";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner);
         ButterKnife.bind(this);
+        User u = (User)getIntent().getSerializableExtra("user");
+        if(u!=null)
+        {
+            userId= u.getUserId();
+            restName = u.getRestName();
+        }
         setUpApp();
         if (savedInstanceState == null) {
             bottomNavigation.setSelectedItemId(R.id.action_menu_change); // change to whichever id should be default
         }
+
     }
 
 

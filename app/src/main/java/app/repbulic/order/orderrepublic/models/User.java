@@ -2,14 +2,16 @@ package app.repbulic.order.orderrepublic.models;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable{
     private String userId;
     private String firstName;
     private String lastName;
     private boolean isOwner;
     private String email;
+    private String restName;
     private ArrayList<String> favoritesList;
 
 
@@ -23,8 +25,16 @@ public class User {
         this.isOwner = isOwner;
         this.email = email;
         this.favoritesList = favoritesList;
+        restName="";
     }
 
+    public String getRestName() {
+        return restName;
+    }
+
+    public void setRestName(String restName) {
+        this.restName = restName;
+    }
 
     public String getUserId() {
 

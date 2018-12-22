@@ -1,9 +1,12 @@
 package app.repbulic.order.orderrepublic.controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,18 +17,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import app.repbulic.order.orderrepublic.MainActivity;
+import app.repbulic.order.orderrepublic.authentication.LoginActivity;
+import app.repbulic.order.orderrepublic.iu.owner.OwnerActivity;
 import app.repbulic.order.orderrepublic.models.User;
 
 public class UserController {
 
-//    //create
-//    public static void createFavorite(String userId, ArrayList<String> favList) {
-//        //get database reference
-//        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("users");
-//        //update already existed favoritesList in user
-//        dbref.child(userId).child("favoritesList").setValue(favList);
-//
-//    }
 
 
 
@@ -93,5 +91,42 @@ public class UserController {
 
             }
         });
+    }
+
+    public static void readUserByEmail(String email, final ProgressBar progressBar, final Context applicationContext) {
+        //get database reference
+        final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("users");
+        //add eventlistener to reference
+        dbref.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot userSnap: dataSnapshot.getChildren())
+                {
+
+                    User user = userSnap.getValue(User.class);
+                    progressBar.setVisibility(View.GONE);
+                    if (user.isOwner()) {
+                        Intent intent = new Intent(applicationContext, OwnerActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("user", user);
+                        applicationContext.startActivity(intent);
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(applicationContext, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("user", user);
+                        applicationContext.startActivity(intent);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
