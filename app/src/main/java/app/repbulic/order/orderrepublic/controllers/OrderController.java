@@ -121,7 +121,7 @@ public class OrderController {
         //get database reference
         final DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("order");
         //add eventlistener to reference
-        dbref.orderByChild("restaurantName").equalTo(updatedOrder.getRestaurantName()).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbref.orderByChild("status").equalTo("in_cart").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -130,26 +130,34 @@ public class OrderController {
                 else {
                     Order oldOrder = null;
                     boolean ordered = false;
+                    boolean finished = false;
+
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                         oldOrder = dataSnapshot1.getValue(Order.class);
-                    }
-                    if (oldOrder.getStatus().equals("placed")) {
-                        createOrder(updatedOrder);
-                    } else {
-                        for (int i = 0; i < oldOrder.getFoods().size(); i++) {
-                            if (oldOrder.getFoods().get(i).getFoodId().equals(updatedOrder.getFoods().get(0).getFoodId()))
-                                ordered = true;
-                        }
-                        if (ordered) {
+                        if (!finished) {
+                            if (oldOrder.getRestaurantName().equals(updatedOrder.getRestaurantName())) {
+
+                                for (int i = 0; i < oldOrder.getFoods().size(); i++) {
+                                    if (oldOrder.getFoods().get(i).getFoodId().equals(updatedOrder.getFoods().get(0).getFoodId()))
+                                        ordered = true;
+                                }
+                                if (!ordered) {
+                                    ArrayList<Food> newList = new ArrayList<>();
+                                    ArrayList<Integer> newQuantities = new ArrayList<>();
+                                    newQuantities = oldOrder.getQuantities();
+                                    newList = oldOrder.getFoods();
+                                    newQuantities.add(updatedOrder.getQuantities().get(0));
+                                    newList.add(updatedOrder.getFoods().get(0));
+                                    dbref.child(oldOrder.getOrderId()).child("foods").setValue(newList);
+                                    dbref.child(oldOrder.getOrderId()).child("quantities").setValue(newQuantities);
+                                }
+                                finished = true;
+                            } else{
+                                createOrder(updatedOrder);
+                                finished = true;
+                            }
                         } else {
-                            ArrayList<Food> newList = new ArrayList<>();
-                            ArrayList<Integer> newQuantities = new ArrayList<>();
-                            newQuantities = oldOrder.getQuantities();
-                            newList = oldOrder.getFoods();
-                            newQuantities.add(updatedOrder.getQuantities().get(0));
-                            newList.add(updatedOrder.getFoods().get(0));
-                            dbref.child(oldOrder.getOrderId()).child("foods").setValue(newList);
-                            dbref.child(oldOrder.getOrderId()).child("quantities").setValue(newQuantities);
+
                         }
                     }
                 }
@@ -204,16 +212,16 @@ public class OrderController {
                 for (DataSnapshot orderSnap : dataSnapshot.getChildren()) {
                     Order order = orderSnap.getValue(Order.class);
                     if (!order.getStatus().equals("in_cart")) {
-                       restNames.add(order.getRestaurantName());
-                       restPics.add(order.getRestauranPicLink());
-                       statuses.add(order.getStatus());
-                       orderIds.add(order.getOrderId());
-                       titles.add(order.getOrderTitle());
-                       totals.add(order.getTotalPrice());
+                        restNames.add(order.getRestaurantName());
+                        restPics.add(order.getRestauranPicLink());
+                        statuses.add(order.getStatus());
+                        orderIds.add(order.getOrderId());
+                        titles.add(order.getOrderTitle());
+                        totals.add(order.getTotalPrice());
                     }
                 }
                 ordersRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, LinearLayoutManager.VERTICAL, false));
-                PlacedOrdersAdapter adapter = new PlacedOrdersAdapter(context, restNames, restPics, statuses, orderIds, titles,totals);
+                PlacedOrdersAdapter adapter = new PlacedOrdersAdapter(context, restNames, restPics, statuses, orderIds, titles, totals);
                 ordersRecyclerView.setAdapter(adapter);
 
             }
@@ -261,7 +269,7 @@ public class OrderController {
                 ArrayList<Order> orders = new ArrayList<>();
                 for (DataSnapshot orderSnap : dataSnapshot.getChildren()) {
                     Order order = orderSnap.getValue(Order.class);
-                    if (order.getStatus().equals("in_process")||order.getStatus().equals("placed")) {
+                    if (order.getStatus().equals("in_process") || order.getStatus().equals("placed")) {
                         orders.add(order);
                     }
                 }

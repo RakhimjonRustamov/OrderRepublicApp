@@ -110,26 +110,30 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
     startActivity(intent);
   }
 
+
   private void setSliderViews() {
-    for (int i = 0; i <= 3; i++) {
+    for (int i = 0; i <= 4; i++) {
       SliderView sliderView = new SliderView(getContext());
       switch (i) {
         case 0:
-          sliderView.setImageUrl("https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          sliderView.setImageUrl("https://0bba85283010b328c484-f139c7401b3658260f434c192b129add.ssl.cf3.rackcdn.com/valleysfastfood.com/manage/manage_uploads/upload/php4CVHex.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
           break;
         case 1:
-          sliderView.setImageUrl("https://images.pexels.com/photos/218983/pexels-photo-218983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          sliderView.setImageUrl("https://media-cdn.tripadvisor.com/media/photo-s/0d/94/77/73/set-burger-575-only-coca.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
           break;
         case 2:
-          sliderView.setImageUrl("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+          sliderView.setImageUrl("http://efi.kenezykorhaz.hu/uploads/files/csirkemell_zoldsegekkel(1).jpg?auto=compress&cs=tinysrgb&h=750&w=1260");
           break;
         case 3:
-          sliderView.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          sliderView.setImageUrl("https://leaf.nutrisystem.com/wp-content/uploads/2016/07/flex-meals-explained.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
           break;
+        case 4:
+          sliderView.setImageUrl("https://www.mariecallendersmeals.com/sites/g/files/qyyrlu306/files/images/product-category/MRE_PLP_Hero-Meals_750x440.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          break;
+
       }
 
       sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-      sliderView.setDescription("setDescription " + (i + 1));
       final int finalI = i;
       sliderView.setOnSliderClickListener(new SliderView.OnSliderClickListener() {
         @Override
