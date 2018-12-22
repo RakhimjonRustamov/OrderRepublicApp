@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:layout_margin="10dp"
@@ -45,10 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_marginBottom="8dp"
+        android:paddingLeft="5dp"
         android:text="29000"
         android:textColor="@color/darkGreen"
         android:textStyle="bold"
-        android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -74,25 +73,34 @@
         android:text="600"
         android:textColor="@color/darkGreen"
         android:textStyle="bold" />
-       <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-         android:id="@+id/cart_elegant_btn"
-         android:layout_weight="3"
-         app:backGroundColor="#4ff104"
-         android:layout_width="match_parent"
-         android:layout_height="0dp">
 
-       </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:layout_marginTop="2dp"
+        android:paddingBottom="10dp"
+        android:weightSum="1">
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+          android:id="@+id/elegant_btn"
+          android:layout_width="match_parent"
+          android:layout_height="35dp">
+        </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+      </LinearLayout>
+
       <TextView
         android:id="@+id/cart_delete_btn"
-        android:layout_width="match_parent"
+        android:layout_width="50dp"
         android:layout_height="0dp"
-        android:background="@drawable/add_button"
-        android:drawableLeft="@drawable/ic_shopping"
-        android:gravity="left|center"
+        android:layout_marginTop="10dp"
         android:layout_weight="3.7"
-        android:layout_marginTop="6dp"
-        android:paddingLeft="19dp"
-        android:text="Delete"
+        android:background="@drawable/add_button"
+        android:drawableLeft="@drawable/ic_remove_shopping"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_marginLeft="29dp"
+        android:paddingLeft="12dp"
         android:textColor="@color/background" />
     </LinearLayout>
   </LinearLayout>
