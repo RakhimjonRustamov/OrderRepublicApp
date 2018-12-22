@@ -11,32 +11,31 @@ import android.widget.Toast;
 import app.repbulic.order.orderrepublic.R;
 
 public class OrdersFragment extends Fragment {
-     public OrdersFragment() {
-        // Required empty public constructor
-      }
+  public OrdersFragment() {
+    // Required empty public constructor
+  }
 
-    // TODO: Rename and change types and number of parameters
-    public static OrdersFragment newInstance() {
-        OrdersFragment fragment = new OrdersFragment();
-        return fragment;
-    }
+  // TODO: Rename and change types and number of parameters
+  public static OrdersFragment newInstance() {
+    OrdersFragment fragment = new OrdersFragment();
+    return fragment;
+  }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Toast.makeText(getActivity(), "INSIDE ORDERS FRAGMENT", Toast.LENGTH_LONG).show();
-    }
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    Toast.makeText(getActivity(), "INSIDE ORDERS FRAGMENT", Toast.LENGTH_LONG).show();
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_orders, container, false);
-    }
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    // Inflate the layout for this fragment
+    return inflater.inflate(R.layout.fragment_orders, container, false);
+  }
 
-    public void onButtonPressed(Uri uri) {
-    }
-
+  public void onButtonPressed(Uri uri) {
+  }
 
 
 }

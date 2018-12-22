@@ -1,8 +1,8 @@
 package app.repbulic.order.orderrepublic.iu.nav;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,41 +14,42 @@ import butterknife.ButterKnife;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    @BindView(R.id.first_name__edit_profile)
-    EditText firstName;
-    @BindView(R.id.last_name__edit_profile)
-    EditText lastName;
-    @BindView(R.id.email__edit_profile)
-    EditText email;
+  @BindView(R.id.first_name__edit_profile)
+  EditText firstName;
+  @BindView(R.id.last_name__edit_profile)
+  EditText lastName;
+  @BindView(R.id.email__edit_profile)
+  EditText email;
 
-    private String userId;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
-        ButterKnife.bind(this);
-        Intent intent = getIntent();
-        firstName.setText(intent.getStringExtra("fn"));
-        lastName.setText(intent.getStringExtra("ln"));
-        email.setText(intent.getStringExtra("e"));
-        userId=intent.getStringExtra("ui");
-    }
+  private String userId;
 
-    public void cancel_button_clicked(View view) {
-        finish();
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_edit_profile);
+    ButterKnife.bind(this);
+    Intent intent = getIntent();
+    firstName.setText(intent.getStringExtra("fn"));
+    lastName.setText(intent.getStringExtra("ln"));
+    email.setText(intent.getStringExtra("e"));
+    userId = intent.getStringExtra("ui");
+  }
 
-    public void confirm_button_clicked(View view) {
-        String newfn, newln, newe;
-        newfn=firstName.getText().toString();
-        newln=lastName.getText().toString();
-        newe=email.getText().toString();
-        //TODO: here email change should be handled properly
-        UserController.updateUser(userId, newfn, newln, newe);
+  public void cancel_button_clicked(View view) {
+    finish();
+  }
 
-        Toast.makeText(this, "Successfully updated", Toast.LENGTH_SHORT).show();
+  public void confirm_button_clicked(View view) {
+    String newfn, newln, newe;
+    newfn = firstName.getText().toString();
+    newln = lastName.getText().toString();
+    newe = email.getText().toString();
+    //TODO: here email change should be handled properly
+    UserController.updateUser(userId, newfn, newln, newe);
 
-        finish();
+    Toast.makeText(this, "Successfully updated", Toast.LENGTH_SHORT).show();
 
-    }
+    finish();
+
+  }
 }

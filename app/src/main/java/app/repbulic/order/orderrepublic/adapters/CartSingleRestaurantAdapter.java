@@ -84,7 +84,7 @@ public class CartSingleRestaurantAdapter extends RecyclerView.Adapter<CartSingle
     });
   }
 
-  private void deleteFromCart(String foodId, int position){
+  private void deleteFromCart(String foodId, int position) {
     onItemClickListener.itemDeleted(foodId);
     cartList.remove(position);
     onItemClickListener.calculateTotal(cartList);
@@ -124,6 +124,7 @@ public class CartSingleRestaurantAdapter extends RecyclerView.Adapter<CartSingle
 
   public interface OnItemClickListener {
     void calculateTotal(List<Food> returnList);
+
     void itemDeleted(String foodId);
   }
 

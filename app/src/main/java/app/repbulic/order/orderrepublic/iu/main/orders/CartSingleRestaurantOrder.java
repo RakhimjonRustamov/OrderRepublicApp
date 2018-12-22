@@ -1,11 +1,14 @@
 package app.repbulic.order.orderrepublic.iu.main.orders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +31,8 @@ public class CartSingleRestaurantOrder extends AppCompatActivity implements View
   Button finishOrderBtn;
   @BindView(R.id.cart_total_price)
   TextView totalPrice;
+  @BindView(R.id.toolbar)
+  Toolbar toolbar;
   private List<Order> list;
   private String orderAddress;
   private String orderTitle;
@@ -39,6 +44,10 @@ public class CartSingleRestaurantOrder extends AppCompatActivity implements View
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_cart_single_restaurant_order);
     ButterKnife.bind(this);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     // You need to send appropriate food list by single restaurant
     list = new ArrayList<>();
@@ -112,4 +121,20 @@ public class CartSingleRestaurantOrder extends AppCompatActivity implements View
     dialogBuilder.show();
   }
 
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        // todo: goto back activity from here
+
+        Intent intent = new Intent(CartSingleRestaurantOrder.this, CartOrdersActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+        return true;
+
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
 }

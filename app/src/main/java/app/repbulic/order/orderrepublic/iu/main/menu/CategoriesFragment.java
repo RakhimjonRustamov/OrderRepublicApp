@@ -78,28 +78,28 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
   public void onClick(View v) {
     switch (v.getId()) {
       case R.id.category_national__menu:
-        choosenCategory="national";
+        choosenCategory = "national";
         break;
       case R.id.category_burgers__menu:
-        choosenCategory="burgers";
+        choosenCategory = "burgers";
         break;
       case R.id.category_pizza__menu:
-        choosenCategory="pizza";
+        choosenCategory = "pizza";
         break;
       case R.id.category_coffee__menu:
-        choosenCategory="coffee";
+        choosenCategory = "coffee";
         break;
       case R.id.category_drinks__menu:
-        choosenCategory="drinks";
+        choosenCategory = "drinks";
         break;
       case R.id.category_sushi__menu:
-        choosenCategory="sushi";
+        choosenCategory = "sushi";
         break;
       case R.id.category_fish_sea_food__menu:
-        choosenCategory="fish";
+        choosenCategory = "fish";
         break;
       case R.id.category_entree__menu:
-        choosenCategory="entree";
+        choosenCategory = "entree";
         break;
     }
     Intent intent = new Intent(getContext(), MenuActivity.class);
