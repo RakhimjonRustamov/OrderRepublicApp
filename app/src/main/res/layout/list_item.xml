@@ -33,6 +33,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="6dp"
         android:gravity="center"
+        android:background="@color/btnPrice"
         android:textColor="@color/darkGreen"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

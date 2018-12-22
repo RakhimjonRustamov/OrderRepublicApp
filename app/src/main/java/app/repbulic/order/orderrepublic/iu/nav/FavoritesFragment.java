@@ -17,42 +17,42 @@ import butterknife.ButterKnife;
 
 public class FavoritesFragment extends Fragment {
 
-    @BindView(R.id.favorites_list)
-    ListView favoritesList;
-    private String userId;
+  @BindView(R.id.favorites_list)
+  ListView favoritesList;
+  private String userId;
 
-    public FavoritesFragment() {
-        // Required empty public constructor
-    }
+  public FavoritesFragment() {
+    // Required empty public constructor
+  }
 
-    // TODO: Rename and change types and number of parameters
-    public static FavoritesFragment newInstance() {
-        FavoritesFragment fragment = new FavoritesFragment();
-        return fragment;
-    }
+  // TODO: Rename and change types and number of parameters
+  public static FavoritesFragment newInstance() {
+    FavoritesFragment fragment = new FavoritesFragment();
+    return fragment;
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        //sent userId from main activity
-        userId = getArguments().getString("userId");
-        //The binding process in a fragment is a little bit different, because its view is inflated manually.
-        View root = inflater.inflate(R.layout.fragment_favorites, container, false);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    //sent userId from main activity
+    userId = getArguments().getString("userId");
+    //The binding process in a fragment is a little bit different, because its view is inflated manually.
+    View root = inflater.inflate(R.layout.fragment_favorites, container, false);
 
-        //So we have to specify WHERE we gonna find the views with @Bind annotation
-        ButterKnife.bind(this, root);
+    //So we have to specify WHERE we gonna find the views with @Bind annotation
+    ButterKnife.bind(this, root);
 
-        //Additionally if you have to use findViewByID() but you are tired to casting every view, you can use Butterknife.findViewBiId();
-        favoritesList = ButterKnife.findById(root, R.id.favorites_list);
+    //Additionally if you have to use findViewByID() but you are tired to casting every view, you can use Butterknife.findViewBiId();
+    favoritesList = ButterKnife.findById(root, R.id.favorites_list);
 
-        return root;
-    }
+    return root;
+  }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+  @Override
+  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
 
-        FavoritesController.readFavorites(userId, favoritesList, getContext());
+    FavoritesController.readFavorites(userId, favoritesList, getContext());
 
-    }
+  }
 }

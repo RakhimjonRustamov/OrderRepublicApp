@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -34,8 +33,7 @@ public class FoodDetailActivity extends AppCompatActivity implements View.OnClic
     @BindView(R.id.desctiption__food_detail)
     TextView description;
     @BindView(R.id.price__food_detail)
-    TextView
-            priceFood;
+    TextView       priceFood;
     @BindView(R.id.restaurantName__food_detail)
     TextView restaurantName;
     @BindView(R.id.rating_info__food_detail)
