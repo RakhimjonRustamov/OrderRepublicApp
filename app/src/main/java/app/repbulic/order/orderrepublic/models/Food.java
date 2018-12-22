@@ -115,7 +115,7 @@ public class Food implements Serializable {
                 "entreee",
                 4.5,
                 "Rayhon",
-                "Rayhon logo");
+                "https://media-cdn.tripadvisor.com/media/photo-s/0b/3e/2e/e2/coffe-latte.jpg");
         Food food2 = new Food(
                 "-LTr_vGHijvuDW95r0zv",
                 "sushi",
@@ -125,7 +125,7 @@ public class Food implements Serializable {
                 "entreee",
                 4.5,
                 "Japana mama",
-                "Rayhon logo");
+                "https://media-cdn.tripadvisor.com/media/photo-s/0b/3e/2e/e2/coffe-latte.jpg");
         foods.add(food1);
         foods.add(food2);
         return foods;

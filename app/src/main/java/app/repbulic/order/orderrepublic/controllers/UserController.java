@@ -1,6 +1,8 @@
 package app.repbulic.order.orderrepublic.controllers;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class UserController {
 //        dbref.child(userId).child("favoritesList").setValue(favList);
 //
 //    }
+
 
 
     //TODO:update ui when data received

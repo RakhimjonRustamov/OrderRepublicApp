@@ -92,6 +92,9 @@ public class CategoriesFragment extends Fragment implements View.OnClickListener
       case R.id.category_drinks__menu:
         choosenCategory = "drinks";
         break;
+      case R.id.category_deserts__menu:
+        choosenCategory="desert";
+        break;
       case R.id.category_sushi__menu:
         choosenCategory = "sushi";
         break;
